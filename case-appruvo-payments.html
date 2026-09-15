@@ -9,14 +9,8 @@
       content="Кейс Appruvo об управлении платежами, условиями договора и финансовыми сценариями после выдачи автомобиля."
     />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css?v=20260915" />
-    <link rel="stylesheet" href="case-study.css?v=20260915" />
+    <link rel="stylesheet" href="styles.css?v=20260915-4" />
+    <link rel="stylesheet" href="case-study.css?v=20260915-2" />
   </head>
   <body>
     <script src="site-loader.js?v=20260915-2"></script>
@@ -24,7 +18,7 @@
       <main>
         <section class="case-hero">
           <div class="case-intro">
-            <a class="back-to-projects" href="index.html#projects">
+            <a class="back-to-projects" href="/#projects">
               <svg aria-hidden="true" viewBox="0 0 24 24">
                 <path d="M19 12H5" />
                 <path d="m12 19-7-7 7-7" />
@@ -45,10 +39,17 @@
             </p>
           </div>
           <figure class="case-intro-visual">
-<img loading="lazy" decoding="async"
-              src="appruvo-intro-mockup.webp"
-              alt="Клиент Appruvo с телефоном и экраном оплаты"
-            />
+            <picture>
+              <source media="(max-width: 760px)" srcset="appruvo-intro-mockup-mobile.avif" type="image/avif" />
+              <img
+                decoding="async"
+                fetchpriority="high"
+                src="appruvo-intro-mockup.webp"
+                width="2100"
+                height="2187"
+                alt="Клиент Appruvo с телефоном и экраном оплаты"
+              />
+            </picture>
           </figure>
         </section>
 
@@ -520,7 +521,7 @@
             <span class="like-button__count">0</span>
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.8 8.6c0 5.4-8.8 10.4-8.8 10.4S3.2 14 3.2 8.6A4.6 4.6 0 0 1 12 6.7a4.6 4.6 0 0 1 8.8 1.9Z" /></svg>
           </button>
-          <a class="primary-link" href="case-schooly-consent.html">Следующий кейс</a>
+          <a class="primary-link" href="/case-schooly-consent">Следующий кейс</a>
         </div>
       </main>
     </div>
@@ -540,9 +541,9 @@
         <span>CV</span>
       </a>
       <span class="floating-nav__group">
-        <a href="index.html" aria-current="page">Мои проекты</a>
-        <a href="growth.html">Как я росла</a>
-        <a href="outside.html">За пределами макетов</a>
+        <a href="/" aria-current="page">Мои проекты</a>
+        <a href="/growth">Как я росла</a>
+        <a href="/outside">За пределами макетов</a>
       </span>
       <details class="contact-menu">
         <summary class="floating-nav__cta" aria-label="Открыть контакты">
@@ -576,6 +577,6 @@
         <path d="m5 12 7-7 7 7" />
       </svg>
     </a>
-    <script src="back-to-top.js"></script>
+    <script src="back-to-top.js?v=20260915-3"></script>
   </body>
 </html>
