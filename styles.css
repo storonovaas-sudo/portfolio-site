@@ -1141,6 +1141,7 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   .floating-nav__cv,
   .floating-nav__cta,
+  .floating-nav__menu,
   .contact-icon-button,
   .back-to-top {
     transition: none;
@@ -1148,6 +1149,7 @@ h1 {
 
   .floating-nav__cv:hover,
   .floating-nav__cta:hover,
+  .floating-nav.is-menu-open .floating-nav__menu,
   .contact-menu[open] .floating-nav__cta:hover,
   .contact-icon-button:hover,
   .back-to-top:hover {
@@ -1499,6 +1501,18 @@ h1 {
     background: #ffffff;
     color: #000000;
     box-shadow: var(--shadow);
+    transform-origin: center;
+    transition: transform 180ms ease;
+  }
+
+  .floating-nav__menu:focus-visible {
+    outline: 2px solid rgba(0, 0, 0, 0.32);
+    outline-offset: 4px;
+  }
+
+  .floating-nav.is-menu-open .floating-nav__menu {
+    transform: scale(1.05);
+    animation: nav-button-vibrate-open 260ms ease-in-out;
   }
 
   .floating-nav__menu svg {
