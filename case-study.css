@@ -865,7 +865,7 @@ body.has-image-lightbox {
 
 @media (max-width: 560px) {
   .page-shell {
-    padding: 144px 16px 40px;
+    padding: max(144px, calc(env(safe-area-inset-top, 0px) + 128px)) 16px 40px;
     --case-heading-size: 19px;
     --case-heading-line: 25px;
     --case-body-line: 23px;

@@ -45,11 +45,10 @@
 
   const value = loader.querySelector(".site-loader__value");
   const startedAt = performance.now();
-  const initialPause = reducedMotion ? 0 : 180;
-  const minimumDuration = reducedMotion ? 0 : 2300;
-  const loadingDuration = reducedMotion ? 0 : 2150;
+  const initialPause = 0;
+  const revealDuration = reducedMotion ? 0 : 360;
+  const loadingDuration = reducedMotion ? 0 : 320;
   let displayedProgress = 0;
-  let pageReady = document.readyState === "complete";
   let completed = false;
 
   const renderProgress = (progress) => {
@@ -73,14 +72,7 @@
       reducedMotion ? 0 : 140,
     );
 
-    window.setTimeout(() => loader.remove(), reducedMotion ? 0 : 900);
-  };
-
-  const finishWhenReady = () => {
-    const elapsed = performance.now() - startedAt;
-    const delay = Math.max(0, minimumDuration - elapsed);
-
-    window.setTimeout(revealPage, delay);
+    window.setTimeout(() => loader.remove(), reducedMotion ? 0 : 460);
   };
 
   const updateProgress = (now) => {
@@ -92,21 +84,13 @@
     const fraction = Math.min(1, Math.max(0, elapsed - initialPause) / loadingDuration);
     renderProgress(92 * fraction ** 1.45);
 
-    if (pageReady && elapsed >= minimumDuration) {
-      finishWhenReady();
+    if (elapsed >= revealDuration) {
+      revealPage();
       return;
     }
 
     window.requestAnimationFrame(updateProgress);
   };
-
-  window.addEventListener(
-    "load",
-    () => {
-      pageReady = true;
-    },
-    { once: true },
-  );
 
   window.addEventListener(
     "pageshow",
@@ -119,6 +103,6 @@
     { once: true },
   );
 
-  window.setTimeout(revealPage, 6000);
+  window.setTimeout(revealPage, reducedMotion ? 0 : 900);
   window.requestAnimationFrame(updateProgress);
 })();

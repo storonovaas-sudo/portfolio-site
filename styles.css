@@ -27,11 +27,14 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  min-width: 320px;
+  min-width: 0;
+  overflow-x: clip;
   background: #ffffff;
   color: var(--text);
   font-family: "Inter", "Segoe UI", sans-serif;
@@ -149,7 +152,7 @@ body.is-site-loading {
   place-items: center;
   background: #ffffff;
   transform: translateY(0);
-  transition: transform 720ms cubic-bezier(0.72, 0, 0.28, 1);
+  transition: transform 280ms cubic-bezier(0.72, 0, 0.28, 1);
 }
 
 .site-loader--leaving {
@@ -1268,7 +1271,7 @@ h1 {
   }
 
   .page {
-    padding: 144px 16px 40px;
+    padding: max(144px, calc(env(safe-area-inset-top, 0px) + 128px)) 16px 40px;
   }
 
   .not-found-page {
@@ -1426,7 +1429,7 @@ h1 {
   .floating-nav {
     right: auto;
     left: 50%;
-    top: max(16px, env(safe-area-inset-top));
+    top: calc(env(safe-area-inset-top, 0px) + 16px);
     justify-content: flex-start;
     width: fit-content;
     max-width: calc(100% - 24px);
