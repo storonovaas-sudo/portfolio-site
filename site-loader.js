@@ -2,6 +2,17 @@
   const loaderSessionKey = "portfolioLoaderSeen";
   const navigationEntry = performance.getEntriesByType("navigation")[0];
   const isReload = navigationEntry?.type === "reload";
+  let isInternalNavigation = false;
+
+  try {
+    isInternalNavigation = Boolean(document.referrer) && new URL(document.referrer).origin === window.location.origin;
+  } catch {
+    // An invalid or unavailable referrer means this is treated as a new visit.
+  }
+
+  if (isInternalNavigation && !isReload) {
+    return;
+  }
 
   try {
     const loaderWasShown = window.sessionStorage.getItem(loaderSessionKey) === "true";
