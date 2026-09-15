@@ -1,0 +1,16 @@
+# macOS metadata
+.DS_Store
+
+# Local dependencies and deployment caches
+node_modules/
+.vercel/
+
+# Common build outputs
+dist/
+build/
+.next/
+
+# Local environment files
+.env
+.env.*
+!.env.example

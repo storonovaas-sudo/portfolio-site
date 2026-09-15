@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Из автосалона в продукт: как полевые исследования помогли увидеть реальный
+      путь сделки
+    </title>
+    <meta
+      name="description"
+      content="BigTech-level кейс про полевые исследования в автосалонах, service blueprint и продуктовые решения для сделки автофинансирования."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="case-study.css" />
+  </head>
+  <body>
+    <div class="page-shell" id="top">
+      <main>
+        <section class="case-hero">
+          <div class="hero-visual case-cover">
+            <div class="hero-glow hero-glow-left"></div>
+            <div class="hero-glow hero-glow-right"></div>
+            <img
+              src="case-appruvo-main.png"
+              alt="Визуал продукта AppRuvo на смартфоне"
+            />
+          </div>
+          <div class="case-intro">
+            <a class="back-to-projects" href="index.html#projects">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M19 12H5" />
+                <path d="m12 19-7-7 7-7" />
+              </svg>
+              <span>Все проекты</span>
+            </a>
+            <div class="case-company">
+              <img src="logo-appruvo.png" alt="" />
+              <div class="case-company__text">
+                <h1>Appruvo</h1>
+                <p>Product Designer · 2025 - по н.в.</p>
+              </div>
+            </div>
+            <p class="hero-description">
+              Исследовала путь сделки изнутри автосалона: от&nbsp;заявки и&nbsp;отказов
+              банков до&nbsp;одобрения и&nbsp;действий внутренних команд. Собрала service
+              blueprint, который помог увидеть, где процесс буксует и&nbsp;что нужно
+              решать не&nbsp;только в&nbsp;интерфейсе, но&nbsp;и&nbsp;в&nbsp;сервисе.
+            </p>
+          </div>
+        </section>
+
+        <section class="case-section" id="tldr">
+          <div class="section-head">
+            <span class="section-kicker">TL;DR</span>
+            <h2>Ключевые точки кейса в одном экране</h2>
+          </div>
+          <div class="tldr-grid">
+            <article class="soft-card tldr-card">
+              <div class="tldr-card-head">
+                <span class="tldr-icon" aria-hidden="true">◉</span>
+                <h3>Контекст</h3>
+              </div>
+              <p>
+                AppRuvo помогает дилерам проводить сделки автофинансирования,
+                когда банки отказали клиенту или нужна альтернативная модель
+                покупки.
+              </p>
+            </article>
+            <article class="soft-card tldr-card">
+              <div class="tldr-card-head">
+                <span class="tldr-icon" aria-hidden="true">!</span>
+                <h3>Проблема</h3>
+              </div>
+              <p>
+                Команда видела отдельные UX-проблемы, но не понимала полный путь
+                сделки: что происходит до нас, внутри автосалона, после заявки и
+                на стороне внутренних команд.
+              </p>
+            </article>
+            <article class="soft-card tldr-card">
+              <div class="tldr-card-head">
+                <span class="tldr-icon" aria-hidden="true">⌘</span>
+                <h3>Моя роль</h3>
+              </div>
+              <p>
+                Я спланировала и провела полевые исследования, наблюдала за
+                работой менеджеров, собрала journey map и service blueprint, а
+                затем перевела инсайты в продуктовые возможности.
+              </p>
+            </article>
+            <article class="soft-card tldr-card">
+              <div class="tldr-card-head">
+                <span class="tldr-icon" aria-hidden="true">↗</span>
+                <h3>Результат</h3>
+              </div>
+              <p>
+                Команда получила целостную карту сделки, список узких мест и
+                основу для приоритизации решений в продукте и сервисе.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="case-section" id="context">
+          <div class="split-section">
+            <div class="text-panel">
+              <div class="section-head">
+                <span class="section-kicker">Контекст продукта</span>
+                <h2>Сделка — это не один экран, а целая система</h2>
+              </div>
+              <p>
+                Продукт работает на стыке автосалона, клиента, финансирования и
+                внутренних операций. На результат сделки влияет не только
+                интерфейс, но и документы, коммуникации, статусы, решения
+                внутренних команд и ожидания клиента.
+              </p>
+            </div>
+            <div class="scheme-card">
+              <div class="context-flow-list" aria-label="Схема пути сделки">
+                <div class="context-flow-item">
+                  <span class="context-flow-number">1</span>
+                  <span class="context-flow-text">Клиент</span>
+                </div>
+                <div class="context-flow-item">
+                  <span class="context-flow-number">2</span>
+                  <span class="context-flow-text">Менеджер автосалона</span>
+                </div>
+                <div class="context-flow-item">
+                  <span class="context-flow-number">3</span>
+                  <span class="context-flow-text">AppRuvo</span>
+                </div>
+                <div class="context-flow-item">
+                  <span class="context-flow-number">4</span>
+                  <span class="context-flow-text">Внутренние команды</span>
+                </div>
+                <div class="context-flow-item">
+                  <span class="context-flow-number">5</span>
+                  <span class="context-flow-text">Одобрение</span>
+                </div>
+                <div class="context-flow-item">
+                  <span class="context-flow-number">6</span>
+                  <span class="context-flow-text">Сделка</span>
+                </div>
+                <div class="context-flow-item">
+                  <span class="context-flow-number">7</span>
+                  <span class="context-flow-text">Выдача авто</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-section" id="problem">
+          <div class="split-section">
+            <div class="text-panel">
+              <div class="section-head">
+                <span class="section-kicker">Зона неопределенности</span>
+                <h2>На старте было непонятно, где на самом деле ломается процесс</h2>
+              </div>
+              <p>
+                У команды были гипотезы про интерфейс: какие статусы непонятны,
+                где пользователи теряются, какие данные сложно заполнять. Но
+                было неясно, является ли интерфейс настоящей причиной проблем —
+                или это симптомы более широкого сервисного процесса.
+              </p>
+            </div>
+            <div class="question-card">
+              <h3>Исследовательские вопросы</h3>
+              <ul class="question-list">
+                <li>Как менеджеры реально ведут сделку в автосалоне?</li>
+                <li>Что происходит до попадания заявки в продукт?</li>
+                <li>Почему сделки зависают после одобрения?</li>
+                <li>Какие данные менеджеру нужны в момент принятия решения?</li>
+                <li>Где внутренние команды подключаются к процессу?</li>
+                <li>Какие проблемы нельзя решить только интерфейсом?</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-section" id="role">
+          <div class="section-head">
+            <span class="section-kicker">Моя роль</span>
+            <h2>От поля и наблюдений до roadmap-рекомендаций</h2>
+          </div>
+          <div class="triple-grid">
+            <article class="soft-card">
+              <span class="role-icon" aria-hidden="true">⌘</span>
+              <h3>Research</h3>
+              <p>План исследования, интервью, наблюдения, field notes.</p>
+            </article>
+            <article class="soft-card">
+              <span class="role-icon" aria-hidden="true">◎</span>
+              <h3>Service Design</h3>
+              <p>
+                Journey map, service blueprint, выявление backstage-процессов.
+              </p>
+            </article>
+            <article class="soft-card">
+              <span class="role-icon" aria-hidden="true">◲</span>
+              <h3>Product Thinking</h3>
+              <p>
+                Связь проблем с воронкой сделки, приоритизация возможностей,
+                рекомендации для roadmap.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="case-section" id="fieldwork">
+          <div class="section-head">
+            <span class="section-kicker">Полевые исследования</span>
+            <h2>Интервью было недостаточно — нужно было увидеть реальную работу</h2>
+          </div>
+          <p class="section-intro">
+            Менеджеры могли описывать процесс “как должно быть”, но не “как
+            происходит на самом деле”. Поэтому я пошла в поле: наблюдала за
+            работой в автосалоне, переключениями между задачами, бумажными
+            заметками, звонками, мессенджерами и обходными путями.
+          </p>
+          <div class="artifact-grid">
+            <figure class="artifact-card artifact-card-photo">
+              <img src="intro-photo.jpg" alt="Фото из автосалона" />
+              <figcaption>Фото из автосалона</figcaption>
+            </figure>
+            <article class="artifact-card placeholder-card">
+              <span>Заметки в блокноте</span>
+              <p>Placeholder под field notes, быстрые записи и наблюдения.</p>
+            </article>
+            <article class="artifact-card placeholder-card">
+              <span>Схемы на бумаге</span>
+              <p>Placeholder под черновые схемы маршрута сделки и ролей.</p>
+            </article>
+            <article class="artifact-card placeholder-card">
+              <span>Обезличенные фрагменты процесса</span>
+              <p>Placeholder под экранные состояния, документы и чекпоинты.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="case-section" id="method">
+          <div class="section-head">
+            <span class="section-kicker">Методология</span>
+            <h2>Как было устроено исследование</h2>
+          </div>
+          <div class="triple-grid">
+            <article class="soft-card">
+              <h3>Методы</h3>
+              <ul class="plain-list">
+                <li>Наблюдение за работой менеджеров</li>
+                <li>Контекстные интервью</li>
+                <li>Разбор реальных сценариев сделки</li>
+                <li>Фиксация артефактов</li>
+                <li>Синтез в карту пути и service blueprint</li>
+              </ul>
+            </article>
+            <article class="soft-card">
+              <h3>Кого исследовала</h3>
+              <ul class="plain-list">
+                <li>Менеджеров автосалона</li>
+                <li>Кредитных специалистов</li>
+                <li>Внутренние команды, которые помогают проводить сделку</li>
+              </ul>
+            </article>
+            <article class="soft-card">
+              <h3>Что фиксировала</h3>
+              <ul class="plain-list">
+                <li>Действия пользователя</li>
+                <li>Инструменты</li>
+                <li>Точки ожидания</li>
+                <li>Ручные обходные пути</li>
+                <li>Непонятные статусы</li>
+                <li>Моменты, где сделка теряет скорость</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="case-section" id="journey">
+          <div class="section-head">
+            <span class="section-kicker">Journey map</span>
+            <h2>Реальный путь сделки</h2>
+          </div>
+          <div class="journey-board">
+            <div class="journey-zone">
+              <div class="zone-label">До AppRuvo</div>
+              <div class="journey-stages">
+                <article class="journey-stage">
+                  <strong>1</strong>
+                  <span>Клиент хочет купить авто</span>
+                </article>
+                <article class="journey-stage">
+                  <strong>2</strong>
+                  <span>Обращается в салон</span>
+                </article>
+                <article class="journey-stage">
+                  <strong>3</strong>
+                  <span>Менеджер подбирает вариант финансирования</span>
+                </article>
+                <article class="journey-stage">
+                  <strong>4</strong>
+                  <span>Банки отказывают или дают неподходящие условия</span>
+                </article>
+              </div>
+            </div>
+            <div class="journey-zone journey-zone-accent">
+              <div class="zone-label">В AppRuvo</div>
+              <div class="journey-stages">
+                <article class="journey-stage">
+                  <strong>5</strong>
+                  <span>Менеджер пробует альтернативный сценарий через AppRuvo</span>
+                </article>
+                <article class="journey-stage">
+                  <strong>6</strong>
+                  <span>Создаёт заявку</span>
+                </article>
+                <article class="journey-stage">
+                  <strong>7</strong>
+                  <span>Ждёт одобрения</span>
+                </article>
+                <article class="journey-stage">
+                  <strong>8</strong>
+                  <span>Получает условия</span>
+                </article>
+              </div>
+            </div>
+            <div class="journey-zone">
+              <div class="zone-label">После одобрения</div>
+              <div class="journey-stages">
+                <article class="journey-stage">
+                  <strong>9</strong>
+                  <span>Обсуждает условия с клиентом</span>
+                </article>
+                <article class="journey-stage">
+                  <strong>10</strong>
+                  <span>Проверяет авто и документы</span>
+                </article>
+                <article class="journey-stage">
+                  <strong>11</strong>
+                  <span>Подключаются внутренние команды</span>
+                </article>
+                <article class="journey-stage">
+                  <strong>12</strong>
+                  <span>Сделка доходит до оплаты и выдачи авто</span>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-section" id="blueprint">
+          <div class="section-head">
+            <span class="section-kicker">Service blueprint</span>
+            <h2>Service blueprint помог отделить UX-проблемы от сервисных разрывов</h2>
+          </div>
+          <p class="section-intro">
+            Blueprint показал, какие узкие места возникают из-за нехватки
+            информации на экране, а какие — из-за ручных процессов, ожидания
+            решений или разрыва коммуникации между ролями.
+          </p>
+          <div class="blueprint-card">
+            <div class="blueprint-grid">
+              <div class="blueprint-row">
+                <span>Действия клиента</span>
+                <div class="blueprint-line"></div>
+              </div>
+              <div class="blueprint-row">
+                <span>Действия менеджера</span>
+                <div class="blueprint-line"></div>
+              </div>
+              <div class="blueprint-row">
+                <span>Интерфейсные точки контакта</span>
+                <div class="blueprint-line"></div>
+              </div>
+              <div class="blueprint-row">
+                <span>Действия внутренних команд</span>
+                <div class="blueprint-line"></div>
+              </div>
+              <div class="blueprint-row">
+                <span>Backstage-процессы</span>
+                <div class="blueprint-line"></div>
+              </div>
+              <div class="blueprint-row">
+                <span>Проблемы</span>
+                <div class="blueprint-line blueprint-line-warn"></div>
+              </div>
+              <div class="blueprint-row">
+                <span>Возможности для улучшения</span>
+                <div class="blueprint-line blueprint-line-accent"></div>
+              </div>
+              <div class="blueprint-row">
+                <span>Метрики / риски</span>
+                <div class="blueprint-line"></div>
+              </div>
+            </div>
+            <div class="blueprint-note">
+              Placeholder под крупную сервисную схему, которую команда может
+              обсуждать вместе: продукт, дизайн, операции и разработка.
+            </div>
+          </div>
+        </section>
+
+        <section class="case-section" id="insights">
+          <div class="section-head">
+            <span class="section-kicker">Ключевые инсайты</span>
+            <h2>Пять наблюдений, которые сдвинули понимание сделки</h2>
+          </div>
+          <div class="insight-grid">
+            <article class="insight-card">
+              <h3>Менеджер работает не с одной заявкой, а с потоком сделок.</h3>
+              <p><strong>Почему важно:</strong> Ему нужно быстро понять, какая сделка требует действия сейчас, а какая просто ожидает ответа.</p>
+              <p><strong>Возможность:</strong> Усилить приоритизацию заявок, статусы и next best action.</p>
+            </article>
+            <article class="insight-card">
+              <h3>После отказа банков клиент находится в хрупком моменте.</h3>
+              <p><strong>Почему важно:</strong> Менеджеру нужно быстро объяснить альтернативу, иначе клиент может уйти или отложить покупку.</p>
+              <p><strong>Возможность:</strong> Дать менеджеру понятные условия, аргументы и сценарии коммуникации.</p>
+            </article>
+            <article class="insight-card">
+              <h3>Часть проблем сделки находится за пределами интерфейса.</h3>
+              <p><strong>Почему важно:</strong> Даже хороший экран не решит задержки, если непонятно, кто следующий ответственный.</p>
+              <p><strong>Возможность:</strong> Связать продуктовые статусы с операционными действиями команды.</p>
+            </article>
+            <article class="insight-card">
+              <h3>Данные по авто и документам становятся критичными ближе к финалу.</h3>
+              <p><strong>Почему важно:</strong> Проблемы проявляются не при создании заявки, а когда сделка уже почти готова.</p>
+              <p><strong>Возможность:</strong> Заранее подсвечивать недостающие данные и риски.</p>
+            </article>
+            <article class="insight-card">
+              <h3>Пользователи используют обходные пути.</h3>
+              <p><strong>Почему важно:</strong> Блокноты, звонки и мессенджеры компенсируют нехватку прозрачности в системе.</p>
+              <p><strong>Возможность:</strong> Встроить контрольные точки и напоминания в продукт.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="case-section" id="opportunities">
+          <div class="section-head">
+            <span class="section-kicker">От инсайтов к возможностям</span>
+            <h2>Как наблюдения превращались в продуктовые гипотезы</h2>
+          </div>
+          <div class="table-card">
+            <table class="decision-table">
+              <thead>
+                <tr>
+                  <th>Инсайт</th>
+                  <th>Риск для сделки</th>
+                  <th>Возможность</th>
+                  <th>Потенциальное решение</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Непонятно, что делать дальше</td>
+                  <td>Сделка зависает</td>
+                  <td>Next action</td>
+                  <td>Подсказка следующего шага</td>
+                </tr>
+                <tr>
+                  <td>Статусы не объясняют реальное состояние</td>
+                  <td>Менеджер уточняет вручную</td>
+                  <td>Прозрачные статусы</td>
+                  <td>Статус + причина + ответственный</td>
+                </tr>
+                <tr>
+                  <td>Данные собираются хаотично</td>
+                  <td>Ошибки на финале</td>
+                  <td>Превентивный чеклист</td>
+                  <td>Чеклист документов и авто</td>
+                </tr>
+                <tr>
+                  <td>Внутренние команды подключаются неявно</td>
+                  <td>Потеря ответственности</td>
+                  <td>Видимость backstage</td>
+                  <td>Ответственный и SLA на этапе</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="case-section" id="prioritization">
+          <div class="section-head">
+            <span class="section-kicker">Приоритизация</span>
+            <h2>Что можно было брать в работу в первую очередь</h2>
+          </div>
+          <div class="priority-matrix">
+            <article class="matrix-cell matrix-cell-accent">
+              <span>High impact / Low effort</span>
+              <p>Быстрые улучшения интерфейса — статусы, подсказки, чеклисты.</p>
+            </article>
+            <article class="matrix-cell">
+              <span>High impact / High effort</span>
+              <p>Изменения в сервисном процессе — backstage, SLA, роли ответственных.</p>
+            </article>
+            <article class="matrix-cell">
+              <span>Low impact / Low effort</span>
+              <p>Косметические улучшения.</p>
+            </article>
+            <article class="matrix-cell matrix-cell-muted">
+              <span>Low impact / High effort</span>
+              <p>Не брать в работу сейчас.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="case-section" id="solutions">
+          <div class="section-head">
+            <span class="section-kicker">Продуктовые решения</span>
+            <h2>Какие изменения логично следовали из исследования</h2>
+          </div>
+          <div class="solution-grid">
+            <article class="solution-card">
+              <h3>Карточка сделки с понятным состоянием</h3>
+              <p><strong>Проблема:</strong> статус не давал картины целиком.</p>
+              <p><strong>Решение:</strong> единая карточка сделки.</p>
+              <p><strong>Почему так:</strong> менеджеру нужен центр принятия решений.</p>
+              <p><strong>Как проверить:</strong> наблюдение за прохождением реальных кейсов.</p>
+            </article>
+            <article class="solution-card">
+              <h3>Следующий шаг по заявке</h3>
+              <p><strong>Проблема:</strong> непонятно, что делать после статуса.</p>
+              <p><strong>Решение:</strong> next action внутри карточки.</p>
+              <p><strong>Почему так:</strong> снижает ручные уточнения.</p>
+              <p><strong>Как проверить:</strong> частота перехода к следующему действию.</p>
+            </article>
+            <article class="solution-card">
+              <h3>Причина задержки</h3>
+              <p><strong>Проблема:</strong> сделка зависает без объяснения.</p>
+              <p><strong>Решение:</strong> причина задержки рядом со статусом.</p>
+              <p><strong>Почему так:</strong> менеджер быстрее понимает контекст.</p>
+              <p><strong>Как проверить:</strong> снижение ручных обращений.</p>
+            </article>
+            <article class="solution-card">
+              <h3>Ответственный за этап</h3>
+              <p><strong>Проблема:</strong> непонятно, кто держит следующий шаг.</p>
+              <p><strong>Решение:</strong> видимость ответственного и SLA.</p>
+              <p><strong>Почему так:</strong> убирает размытость ownership.</p>
+              <p><strong>Как проверить:</strong> доля зависших сделок по этапам.</p>
+            </article>
+            <article class="solution-card">
+              <h3>Чеклист документов</h3>
+              <p><strong>Проблема:</strong> ошибки проявляются слишком поздно.</p>
+              <p><strong>Решение:</strong> превентивный чеклист документов и авто.</p>
+              <p><strong>Почему так:</strong> помогает снизить финальные сбои.</p>
+              <p><strong>Как проверить:</strong> доля заявок с неполными данными.</p>
+            </article>
+            <article class="solution-card">
+              <h3>Подсказки для коммуникации с клиентом</h3>
+              <p><strong>Проблема:</strong> менеджер по-разному объясняет альтернативу.</p>
+              <p><strong>Решение:</strong> готовые сценарии объяснения условий.</p>
+              <p><strong>Почему так:</strong> снижает потерю клиента после отказа банков.</p>
+              <p><strong>Как проверить:</strong> наблюдение за переговорами и конверсия.</p>
+            </article>
+            <article class="solution-card">
+              <h3>Приоритизация заявок</h3>
+              <p><strong>Проблема:</strong> все сделки выглядят одинаково срочными.</p>
+              <p><strong>Решение:</strong> очередность по риску и стадии.</p>
+              <p><strong>Почему так:</strong> поддерживает потоковую работу менеджера.</p>
+              <p><strong>Как проверить:</strong> скорость реакции на критичные сделки.</p>
+            </article>
+            <article class="solution-card">
+              <h3>Предупреждения о рисках</h3>
+              <p><strong>Проблема:</strong> риски всплывают слишком поздно.</p>
+              <p><strong>Решение:</strong> ранние предупреждения и блокеры.</p>
+              <p><strong>Почему так:</strong> помогает не терять сделку на финале.</p>
+              <p><strong>Как проверить:</strong> доля сделок, прошедших без повторных уточнений.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="case-section" id="metrics">
+          <div class="section-head">
+            <span class="section-kicker">Метрики и валидация</span>
+            <h2>Как бы я проверяла эффект решений</h2>
+          </div>
+          <p class="section-intro">
+            Так как исследование проходило до полноценной оценки эффекта, я
+            разделила метрики на продуктовые, операционные и поведенческие,
+            чтобы команда могла проверить влияние решений после запуска.
+          </p>
+          <div class="triple-grid">
+            <article class="soft-card">
+              <h3>Продуктовые</h3>
+              <ul class="plain-list">
+                <li>Конверсия из заявки в одобрение</li>
+                <li>Конверсия из одобрения в сделку</li>
+                <li>Adoption среди дилеров</li>
+                <li>Повторное использование продукта менеджером</li>
+              </ul>
+            </article>
+            <article class="soft-card">
+              <h3>Операционные</h3>
+              <ul class="plain-list">
+                <li>Время от заявки до первого решения</li>
+                <li>Время от одобрения до следующего действия</li>
+                <li>Количество зависших сделок</li>
+                <li>Количество ручных обращений к внутренней команде</li>
+              </ul>
+            </article>
+            <article class="soft-card">
+              <h3>Поведенческие</h3>
+              <ul class="plain-list">
+                <li>Доля заявок с неполными данными</li>
+                <li>Использование чеклистов</li>
+                <li>Переходы к next action</li>
+                <li>Частота возврата к карточке сделки</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="case-section" id="team-impact">
+          <div class="section-head">
+            <span class="section-kicker">Влияние на команду</span>
+            <h2>Исследование стало общей картой для продукта, дизайна и операций</h2>
+          </div>
+          <p class="section-intro">
+            Service blueprint помог синхронизировать понимание сделки между
+            продуктом, дизайном, разработкой и внутренними командами. Стало
+            проще обсуждать, где пользовательская боль, где сервисный разрыв, а
+            где техническое или процессное ограничение.
+          </p>
+          <div class="triple-grid">
+            <article class="soft-card">
+              <h3>Для продукта</h3>
+              <p>
+                Появились понятные зоны улучшения: статусы, next action,
+                карточка сделки, чеклисты и приоритизация.
+              </p>
+            </article>
+            <article class="soft-card">
+              <h3>Для сервиса</h3>
+              <p>
+                Стало видно, где сделка буксует из-за backstage-процессов и
+                коммуникаций.
+              </p>
+            </article>
+            <article class="soft-card">
+              <h3>Для бизнеса</h3>
+              <p>
+                Исследование подсветило точки, влияющие на скорость сделки,
+                конверсию в оплату и доверие дилеров.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="case-section" id="next">
+          <div class="section-head">
+            <span class="section-kicker">Что дальше</span>
+            <h2>Следующим шагом я бы валидировала решения на реальных сценариях</h2>
+          </div>
+          <div class="next-panel">
+            <p>
+              Следующим шагом я бы провела валидацию ключевых решений на реальных
+              сценариях: проверила бы, помогает ли новая карточка сделки быстрее
+              понять статус, снижает ли next action количество ручных уточнений и
+              ускоряет ли чеклист прохождение финальных этапов.
+            </p>
+            <ol class="step-list">
+              <li>Протестировать обновленную карточку сделки на менеджерах</li>
+              <li>Проверить понятность статусов и next action</li>
+              <li>Настроить метрики по времени прохождения этапов и зависшим сделкам</li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="case-section case-section-final" id="final">
+          <div class="closing-panel">
+            <span class="section-kicker">Финальный вывод</span>
+            <h2>
+              Этот кейс показывает мой подход к продуктовому дизайну: я не
+              ограничиваюсь экраном, а разбираюсь в людях, процессах, бизнесе и
+              превращаю сложный сервисный контекст в понятные продуктовые
+              решения.
+            </h2>
+            <div class="closing-actions">
+              <button class="like-button" type="button" data-like-key="case-autosalon" aria-label="Поставить лайк кейсу">
+                <span class="like-button__count">0</span>
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M20.8 8.6c0 5.4-8.8 10.4-8.8 10.4S3.2 14 3.2 8.6A4.6 4.6 0 0 1 12 6.7a4.6 4.6 0 0 1 8.8 1.9Z" />
+                </svg>
+              </button>
+              <a class="primary-link" href="case-dealers.html">Следующий кейс</a>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer class="footer">
+      <p>©2026</p>
+      <p>Афоничева Анастасия</p>
+    </footer>
+
+    <nav class="floating-nav" aria-label="Основная навигация">
+      <a class="floating-nav__cv" href="afonicheva-cv.pdf" target="_blank" rel="noopener" aria-label="Скачать CV">
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M12 3v11" />
+          <path d="m7 10 5 5 5-5" />
+          <path d="M5 19h14" />
+        </svg>
+        <span>CV</span>
+      </a>
+      <span class="floating-nav__group">
+        <a href="index.html" aria-current="page">Мои проекты</a>
+        <a href="growth.html">Как я росла</a>
+        <a href="outside.html">За пределами макетов</a>
+      </span>
+      <details class="contact-menu">
+        <summary class="floating-nav__cta" aria-label="Открыть контакты">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M7.5 15.5h-.9a3.6 3.6 0 0 1-3.6-3.6V8.6A3.6 3.6 0 0 1 6.6 5h5.8A3.6 3.6 0 0 1 16 8.6v3.3a3.6 3.6 0 0 1-3.6 3.6H10l-2.5 2.4v-2.4Z" />
+            <path d="M13 18h1.2l2.3 2.1V18h.9a3.6 3.6 0 0 0 3.6-3.6v-3A3.6 3.6 0 0 0 17.4 8H17" />
+          </svg>
+          <span>Написать</span>
+        </summary>
+        <div class="contact-menu__panel" aria-label="Контакты">
+          <a href="https://t.me/afonicheva_anastasi" target="_blank" rel="noopener">
+            <span class="contact-menu__icon">
+              <img src="icon-telegram.webp" alt="" />
+            </span>
+            <span>Telegram</span>
+          </a>
+          <a href="https://max.ru/u/f9LHodD0cOKN7JqvdkjJ8qp6gxit5wG5Px3wO49dWImixJ5llgTWdi1MUFA" target="_blank" rel="noopener">
+            <span class="contact-menu__icon">
+              <img src="icon-max.webp" alt="" />
+            </span>
+            <span>MAX</span>
+          </a>
+          <a href="mailto:storonovaas@gmail.com">
+            <span class="contact-menu__icon">
+              <img src="icon-gmail.webp" alt="" />
+            </span>
+            <span>Почта</span>
+          </a>
+        </div>
+      </details>
+    </nav>
+    <a class="back-to-top" href="#top" aria-label="Вернуться наверх" aria-hidden="true" tabindex="-1">
+      <span>Наверх</span>
+      <svg aria-hidden="true" viewBox="0 0 24 24">
+        <path d="M12 19V5" />
+        <path d="m5 12 7-7 7 7" />
+      </svg>
+    </a>
+    <script src="back-to-top.js"></script>
+  </body>
+</html>

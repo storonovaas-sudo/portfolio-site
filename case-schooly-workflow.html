@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Schooly: многошаговый workflow без&nbsp;бумажных заявлений и&nbsp;лишней переписки</title>
+    <meta
+      name="description"
+      content="Кейс Schooly про сквозной сценарий ухода ученика: мобильное заявление родителя, веб-сервис школы, статусы и синхронизация данных."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="case-study.css" />
+  </head>
+  <body>
+    <div class="page-shell" id="top">
+      <main>
+        <section class="case-hero">
+          <div class="case-intro">
+            <a class="back-to-projects" href="index.html#projects">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M19 12H5" />
+                <path d="m12 19-7-7 7-7" />
+              </svg>
+              <span>Все проекты</span>
+            </a>
+            <div class="case-company">
+              <img src="logo-schooly.webp" alt="" />
+              <div class="case-company__text">
+                <h1>Schooly</h1>
+                <p>UX/UI Designer · 2022 - 2025</p>
+              </div>
+            </div>
+            <p class="hero-description">
+              Спроектировала флоу, где родители подают заявление онлайн, а&nbsp;школа
+              видит даты, причины и&nbsp;статусы без&nbsp;звонков, бумажных заявлений
+              и&nbsp;ручных уточнений.
+            </p>
+          </div>
+          <div class="hero-visual case-cover case-cover--mockup">
+            <img src="schooly-v01.png" alt="Мокап мобильного интерфейса Schooly" />
+          </div>
+        </section>
+
+        <section class="case-section" id="product">
+          <div class="text-panel text-panel--summary">
+            <div class="summary-block">
+              <span class="section-kicker">О&nbsp;продукте</span>
+              <p>
+                Schooly — MIS-система для&nbsp;частных школ. Сотрудники управляют учениками
+                и&nbsp;административными процессами в&nbsp;веб-приложении, родители
+                взаимодействуют со&nbsp;школой через&nbsp;мобильное приложение.
+              </p>
+            </div>
+            <div class="summary-block">
+              <span class="section-kicker">Проблема</span>
+              <p>
+                Уход ученика происходил за&nbsp;пределами Schooly: родитель писал или&nbsp;звонил в&nbsp;школу, сотрудник получал информацию в&nbsp;свободной форме и&nbsp;вручную переносил её в&nbsp;систему. В&nbsp;результате данные о&nbsp;дате, причине и&nbsp;статусе ученика зависели от&nbsp;переписки и&nbsp;ручных действий сотрудников.
+              </p>
+              <figure class="artifact-card">
+                <img src="schooly-problem-points-v2.png" alt="Иллюстрация основных проблем старого процесса ухода ученика" />
+              </figure>
+            </div>
+            <div class="summary-block">
+              <span class="section-kicker">Задача</span>
+              <p>
+                Собрать уход ученика в&nbsp;единый цифровой процесс: дать родителю способ
+                самостоятельно сообщить об&nbsp;уходе, а&nbsp;школе — получить структурированные
+                данные и&nbsp;синхронизировать дату и&nbsp;статус ученика без&nbsp;ручного переноса
+                информации.
+              </p>
+              <figure class="artifact-card">
+                <img src="schooly-contribution.png" alt="Иллюстрация этапов моего вклада в проект Schooly" />
+              </figure>
+            </div>
+            <div class="summary-block">
+              <span class="section-kicker">Влияние</span>
+              <p>Автоматизация сценария должна была повлиять не&nbsp;только на&nbsp;опыт родителя, но&nbsp;и&nbsp;на&nbsp;операционную эффективность школы, качество данных и&nbsp;управляемость оттока учеников.</p>
+              <p><strong>Операционная эффективность</strong><br />Сократить время обработки ухода, количество ручных действий, звонков, переписок и&nbsp;передач информации между сотрудниками и&nbsp;отделами.</p>
+              <p><strong>Качество данных</strong><br />Повысить актуальность статусов учеников, сократить количество ручных ошибок и&nbsp;собирать причины ухода в&nbsp;структурированном виде.</p>
+              <p><strong>Бизнес-ценность</strong><br />Дать школе данные для&nbsp;анализа оттока: понимать, почему ученики уходят, отделять внешние причины от&nbsp;тех, на&nbsp;которые школа может повлиять, и&nbsp;использовать эту информацию для&nbsp;работы с&nbsp;retention, планирования количества учеников и&nbsp;связанных финансовых процессов.</p>
+              <figure class="artifact-card">
+                <img src="schooly-workflow-impact.png" alt="Влияние автоматизации процесса ухода ученика на скорость обработки, затраты, качество данных и бизнес-видимость" />
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-section" id="complexity">
+          <div class="section-head">
+            <span class="section-kicker">Сложность</span>
+          </div>
+          <div class="text-panel">
+            <p>
+              На&nbsp;первый взгляд сценарий мог ограничиться несколькими экранами для&nbsp;подачи заявления. Но&nbsp;за&nbsp;простым действием «сообщить об&nbsp;уходе» скрывалась
+              гораздо большая продуктовая логика.
+            </p>
+            <p>
+              Нужно было определить, как&nbsp;уход ученика повлияет на&nbsp;его статус и&nbsp;связанные
+              процессы, где и&nbsp;в&nbsp;каком виде будет храниться эта информация, как&nbsp;будут
+              пересчитываться и&nbsp;распределяться оплаты, что&nbsp;произойдёт с&nbsp;уже внесёнными
+              средствами и&nbsp;как&nbsp;связанные статусы будут меняться в&nbsp;разных частях системы.
+            </p>
+            <p>
+              При&nbsp;этом изменения затрагивали сразу несколько разделов Schooly: мобильное
+              приложение родителя, профиль и&nbsp;список учеников в&nbsp;веб-приложении, настройки
+              школы, статистику, уведомления и&nbsp;email-коммуникации.
+            </p>
+            <p>
+              Поэтому основная сложность была не в&nbsp;проектировании формы, а&nbsp;в&nbsp;том,
+              чтобы&nbsp;встроить новый сценарий в&nbsp;существующую продуктовую систему и&nbsp;согласовать поведение всех связанных процессов.
+            </p>
+          </div>
+          <figure class="artifact-card">
+            <img src="schooly-product-map.png" alt="Иллюстрация затронутых разделов продукта Schooly" />
+          </figure>
+        </section>
+
+        <section class="case-section" id="rules">
+          <div class="section-head">
+            <span class="section-kicker">Правила</span>
+          </div>
+          <div class="text-panel">
+            <p>
+              До&nbsp;проектирования я собрала черновой flow и&nbsp;список открытых вопросов.
+              Вместе с&nbsp;продакт-менеджером мы прошли
+              сценарий от&nbsp;подачи заявления до&nbsp;изменения статуса ученика и&nbsp;зафиксировали
+              правила системы.
+            </p>
+            <p>
+              В&nbsp;результате до&nbsp;UI были определены основные состояния, ограничения и&nbsp;edge cases: кто может подать заявление, когда&nbsp;оно доступно, какую дату
+              можно выбрать и&nbsp;как&nbsp;заявление влияет на&nbsp;статус ученика.
+            </p>
+          </div>
+          <div class="artifact-grid artifact-grid--paired">
+            <figure class="artifact-card">
+              <img
+                src="schooly-rules-blue.png"
+                alt="Мокап мобильного интерфейса Schooly со списком учеников и статусами"
+              />
+            </figure>
+            <figure class="artifact-card">
+              <img
+                src="schooly-rules-light.png"
+                alt="Иллюстрация с отметкой подтверждения для правил сценария"
+              />
+            </figure>
+          </div>
+        </section>
+
+        <section class="case-section" id="research">
+          <div class="section-head">
+            <span class="section-kicker">Исследования</span>
+          </div>
+          <div class="text-panel">
+            <p>
+              Перед&nbsp;проектированием я изучила, как&nbsp;похожие задачи решены в&nbsp;других
+              образовательных продуктах. Посмотрела демо-версии систем-конкурентов,
+              а&nbsp;также смогла пройти реальные сценарии в&nbsp;МЭШ благодаря&nbsp;доступу через&nbsp;учащуюся сестру и&nbsp;знакомых учителей.
+            </p>
+            <p>
+              Дополнительно изучила механики отмены подписок и&nbsp;удаления аккаунтов в&nbsp;продуктах из&nbsp;других сфер — как&nbsp;примеры действий с&nbsp;серьёзными последствиями
+              для&nbsp;пользователя.
+            </p>
+            <p>
+              Я сравнивала не визуальные решения, а&nbsp;саму механику сценариев: как&nbsp;объясняются последствия, когда&nbsp;запрашивается причина, требуется ли&nbsp;дополнительное подтверждение, что&nbsp;происходит после&nbsp;отправки и&nbsp;можно ли&nbsp;изменить принятое решение.
+            </p>
+          </div>
+        </section>
+
+        <section class="case-section" id="hypotheses">
+          <div class="section-head">
+            <span class="section-kicker">Поиск решения</span>
+          </div>
+          <div class="text-panel">
+            <p>Я собрала решение из&nbsp;шести продуктовых механизмов.</p>
+          </div>
+          <div class="solution-grid">
+            <article class="solution-card">
+              <h3>1. Цифровое заявление об&nbsp;уходе</h3>
+              <p>
+                Родитель выбирает дату ухода, указывает причину и&nbsp;отправляет заявление
+                непосредственно в&nbsp;Schooly. Система сразу учитывает правила конкретной
+                школы и&nbsp;блокирует даты, в&nbsp;которые уход невозможен, поэтому некорректное
+                заявление нельзя отправить изначально.
+              </p>
+            </article>
+            <article class="solution-card">
+              <h3>2. Автоматический переход между&nbsp;статусами</h3>
+              <p>
+                Подача заявления не создаёт новый статус ученика: до&nbsp;даты ухода он
+                сохраняет текущее состояние, а&nbsp;в&nbsp;назначенный день Schooly автоматически
+                переводит его в&nbsp;следующий статус. Это позволило встроить новый сценарий
+                в&nbsp;существующую модель, не усложняя её дополнительными состояниями.
+              </p>
+            </article>
+            <article class="solution-card">
+              <h3>3. Настраиваемые правила подачи заявления</h3>
+              <p>
+                Школа самостоятельно задаёт допустимые сроки уведомления и&nbsp;формирует
+                список причин ухода. Schooly учитывает эти настройки при&nbsp;заполнении
+                заявления: блокирует недоступные даты и&nbsp;показывает родителю актуальные
+                для&nbsp;конкретной школы причины.
+              </p>
+              <p>
+                При&nbsp;этом всегда остаётся вариант «Другая причина» — родитель может
+                выбрать его и&nbsp;описать ситуацию своими словами.
+              </p>
+            </article>
+            <article class="solution-card">
+              <h3>4. Возможность отменить заявление</h3>
+              <p>
+                Если&nbsp;родитель передумал до&nbsp;даты ухода, заявление можно отменить без&nbsp;последствий для&nbsp;данных ученика. Система автоматически возвращает прежнее
+                состояние и&nbsp;связанные сущности — статус, платежи, счета и&nbsp;другие процессы,
+                которые были затронуты заявлением.
+              </p>
+              <p>
+                Это снижает риск потери данных и&nbsp;избавляет сотрудников школы от&nbsp;ручного
+                восстановления информации.
+              </p>
+            </article>
+            <article class="solution-card">
+              <h3>5. Централизованное управление заявлениями</h3>
+              <p>
+                Сотрудники школы видят всех учеников с&nbsp;запланированным уходом, даты и&nbsp;причины в&nbsp;привычном рабочем пространстве. Это позволяет работать с&nbsp;заявлениями как&nbsp;с&nbsp;частью системы, а&nbsp;не собирать информацию из&nbsp;писем,
+                звонков и&nbsp;переписок.
+              </p>
+            </article>
+            <article class="solution-card">
+              <h3>6. Связь ухода с&nbsp;финансовой и&nbsp;продуктовой логикой</h3>
+              <p>
+                Уход ученика автоматически учитывается во&nbsp;всех связанных процессах
+                Schooly: профиле ученика, списках, статистике, продлении обучения,
+                коммуникациях и, особенно, в&nbsp;платежах и&nbsp;выставлении счетов.
+              </p>
+              <p>
+                Система должна корректно учитывать дату ухода при&nbsp;формировании будущих
+                начислений, счетов и&nbsp;других финансовых обязательств, чтобы&nbsp;школе не
+                приходилось вручную пересчитывать платежи, отменять или&nbsp;перевыставлять
+                счета и&nbsp;проверять, что&nbsp;ничего лишнего не начислилось после&nbsp;ухода.
+              </p>
+              <p>
+                Одно действие родителя запускает изменения сразу во&nbsp;всей системе и&nbsp;снижает риск рассинхронизации между&nbsp;статусом ученика и&nbsp;его финансовой
+                историей.
+              </p>
+            </article>
+          </div>
+          <figure class="artifact-card artifact-card--transparent">
+            <img
+              src="schooly-solution-entry.png"
+              alt="Иллюстрация экранов Schooly для входа в заявление, предупреждений и статусов"
+            />
+          </figure>
+        </section>
+
+        <section class="case-section" id="priority">
+          <div class="section-head">
+            <span class="section-kicker">Приоритизация</span>
+          </div>
+          <div class="text-panel">
+            <p>
+              В&nbsp;первую версию вошли все пять механизмов: цифровое заявление,
+              автоматическая смена статуса, централизованная работа с&nbsp;заявлениями,
+              гибкие правила школы и&nbsp;уведомления.
+            </p>
+            <p>
+              При&nbsp;этом сценарий ухода проектировался не как&nbsp;изолированная функция.
+              В&nbsp;дальнейшем эта механика должна стать основой для&nbsp;других изменений в&nbsp;жизненном цикле ученика: перевода между&nbsp;классами, факультетами или&nbsp;группами, смены программы и&nbsp;других переходов, связанных с&nbsp;изменением
+              статуса.
+            </p>
+            <p>
+              Важно было заложить достаточно универсальную логику и&nbsp;потому, что&nbsp;Schooly
+              рассчитан не только на&nbsp;частные общеобразовательные школы. Похожие процессы
+              возникают в&nbsp;спортивных секциях, музыкальных школах и&nbsp;других образовательных
+              организациях, где отличаются структура обучения, статусы учеников и&nbsp;правила
+              переходов.
+            </p>
+            <p>
+              Поэтому мы проектировали не только сценарий ухода, а&nbsp;основу для&nbsp;более
+              гибкой системы управления изменениями в&nbsp;статусе ученика.
+            </p>
+          </div>
+        </section>
+
+        <section class="case-section" id="design">
+          <div class="section-head">
+            <span class="section-kicker">Проектирование сценария</span>
+          </div>
+          <div class="text-panel">
+            <p>
+              Собрала единый end-to-end flow, который связывает действия родителя,
+              логику Schooly и&nbsp;процессы школы.
+            </p>
+            <p>
+              Отдельно проработала отзыв уже поданного заявления, ограничения на&nbsp;выбор
+              даты, альтернативные состояния, edge cases и&nbsp;сценарии, которые могли
+              привести пользователя в&nbsp;тупик. Для&nbsp;каждого определила, как&nbsp;система должна
+              реагировать и&nbsp;куда вести пользователя дальше.
+            </p>
+          </div>
+          <div class="screen-grid">
+            <figure class="artifact-card">
+              <img src="schooly-process-overview.png" alt="Схема процесса ухода ученика на стороне школы и родителя" />
+            </figure>
+            <figure class="artifact-card">
+              <img src="schooly-parent-user-flow.png" alt="User Flow родителя в приложении Schooly" />
+            </figure>
+            <div class="screen-pair">
+              <figure class="artifact-card">
+                <img src="schooly-school-flow-light.png" alt="Сценарий школы: список учеников и статус ухода" />
+              </figure>
+              <figure class="artifact-card">
+                <img src="schooly-school-flow-dark.png" alt="Сценарий школы: история статусов ученика" />
+              </figure>
+            </div>
+            <figure class="artifact-card">
+              <img src="schooly-mobile-screen-flow.png" alt="Screen Flow мобильного приложения Schooly" />
+            </figure>
+          </div>
+        </section>
+
+        <section class="case-section" id="logic-check">
+          <div class="section-head">
+            <span class="section-kicker">Прототипирование</span>
+          </div>
+          <div class="text-panel">
+            <p>
+              Low-fidelity-прототип помог проверить сценарий до&nbsp;работы над&nbsp;UI:
+              последовательность шагов, ограничения дат, необратимые действия,
+              состояния после&nbsp;отправки и&nbsp;синхронизацию двух интерфейсов.
+            </p>
+            <p>
+              После&nbsp;согласования логики подготовила Screen Flow со&nbsp;всеми ключевыми
+              состояниями и&nbsp;пограничными сценариями. Такой порядок позволил не тратить
+              время на&nbsp;детальный UI до&nbsp;того, как&nbsp;команда согласовала продуктовые правила.
+            </p>
+          </div>
+          <div class="screen-grid">
+            <figure class="artifact-card">
+              <img src="schooly-notification-laptop.png" alt="Уведомление Schooly о заявлении на уход на экране ноутбука" />
+            </figure>
+            <figure class="artifact-card">
+              <img src="schooly-post-submission.png" alt="Состояние после отправки заявления в Schooly" />
+            </figure>
+            <figure class="artifact-card">
+              <img src="schooly-web-sync-flow.png" alt="Веб-интерфейс Schooly после синхронизации статуса ученика" />
+            </figure>
+            <figure class="artifact-card">
+              <img src="schooly-web-laptop-mockup.png" alt="Веб-интерфейс Schooly на ноутбуке" />
+            </figure>
+          </div>
+        </section>
+
+        <section class="case-section" id="final-solution">
+          <div class="section-head">
+            <span class="section-kicker">Финальное решение</span>
+          </div>
+          <div class="text-panel">
+            <p><strong>1. Родитель самостоятельно сообщает об&nbsp;уходе</strong></p>
+            <p>
+              В&nbsp;мобильном приложении появился единый сценарий подачи заявления.
+              Родитель выбирает ребёнка, дату ухода и&nbsp;причину, проверяет данные и&nbsp;подтверждает отправку.
+            </p>
+            <p>
+              При&nbsp;этом интерфейс сразу учитывает правила конкретной школы: даты, в&nbsp;которые заявление подать нельзя, недоступны для&nbsp;выбора, а&nbsp;список причин
+              школа может настроить самостоятельно. Если&nbsp;подходящей причины нет,
+              родитель может выбрать «Другая» и&nbsp;указать её вручную.
+            </p>
+          </div>
+          <div class="screen-grid">
+            <figure class="artifact-card">
+              <img src="schooly-parent-leaving-reasons.png" alt="Выбор причины ухода в мобильном приложении Schooly" />
+            </figure>
+          </div>
+          <div class="text-panel">
+            <p>
+              После&nbsp;отправки родитель видит актуальную информацию о&nbsp;статусе ребёнка и&nbsp;запланированных изменениях — заявление не исчезает в&nbsp;«чёрном ящике»,
+              а&nbsp;становится частью его профиля.
+            </p>
+          </div>
+          <div class="screen-grid">
+            <figure class="artifact-card">
+              <img src="schooly-parent-profile-after-submission.png" alt="Профиль ребёнка и состояние заявления после отправки" />
+            </figure>
+          </div>
+          <div class="text-panel">
+            <p><strong>2. Под&nbsp;простым действием работает системная логика</strong></p>
+            <p>
+              Отправка заявления запускает не только изменение интерфейса. Schooly
+              сохраняет дату и&nbsp;причину ухода, связывает их с&nbsp;профилем ученика и&nbsp;передаёт информацию в&nbsp;связанные процессы системы.
+            </p>
+            <p>
+              При&nbsp;этом мы не стали расширять статусную модель дополнительными
+              промежуточными статусами. Ученик сохраняет актуальный статус до&nbsp;назначенной даты, а&nbsp;когда&nbsp;она наступает, система автоматически
+              переводит его в&nbsp;следующий статус.
+            </p>
+          </div>
+          <div class="screen-grid">
+            <figure class="artifact-card">
+              <img src="schooly-status-transition.png" alt="Запланированное изменение статуса ученика в регистрационной карточке Schooly" />
+            </figure>
+          </div>
+          <div class="text-panel">
+            <p>
+              Логика учитывает и&nbsp;процессы, которые почти не видны родителю в&nbsp;интерфейсе: связанные оплаты, расчёты и&nbsp;возвраты, данные ученика,
+              списки и&nbsp;статистику школы. За&nbsp;счёт этого заявление становится не
+              отдельной формой, а&nbsp;событием, которое корректно меняет состояние
+              ученика во&nbsp;всей системе.
+            </p>
+          </div>
+          <div class="text-panel">
+            <p><strong>3. Школа получает данные внутри привычного рабочего процесса</strong></p>
+            <p>
+              Сотруднику больше не нужно получать заявление по&nbsp;телефону или&nbsp;в&nbsp;переписке, уточнять необходимые данные и&nbsp;вручную переносить их в&nbsp;Schooly.
+            </p>
+            <p>
+              Дата ухода, причина и&nbsp;связанные изменения доступны непосредственно в&nbsp;профиле ученика и&nbsp;других рабочих разделах системы.
+            </p>
+          </div>
+          <div class="screen-grid">
+            <figure class="artifact-card">
+              <img src="schooly-student-list-leaving.png" alt="Список учеников Schooly с фильтрацией по статусу и причине ухода" />
+            </figure>
+          </div>
+          <div class="text-panel">
+            <p>
+              В&nbsp;профиле сохраняется история изменений, поэтому сотрудник может видеть
+              не только текущее состояние ученика, но&nbsp;и&nbsp;запланированную смену статуса
+              и&nbsp;дату, когда&nbsp;она произойдёт.
+            </p>
+          </div>
+          <div class="screen-grid">
+            <figure class="artifact-card">
+              <img src="schooly-student-status-history.png" alt="Профиль ученика Schooly с историей статусов" />
+            </figure>
+          </div>
+          <div class="text-panel">
+            <p>
+              Изменения автоматически учитываются в&nbsp;связанных списках и&nbsp;статистике,
+              поэтому разные части Schooly работают с&nbsp;одной и&nbsp;той же актуальной
+              информацией.
+            </p>
+          </div>
+          <div class="screen-grid">
+            <figure class="artifact-card">
+              <img src="schooly-student-status-statistics.png" alt="Статистика Schooly по статусам учеников" />
+            </figure>
+          </div>
+          <div class="text-panel">
+            <p><strong>4. Продумала сценарии за&nbsp;пределами happy path</strong></p>
+            <p>
+              Отдельно проработала ситуации, в&nbsp;которых основной сценарий отклоняется
+              от&nbsp;ожидаемого: отмену уже поданного заявления, ограничения на&nbsp;выбор
+              даты, изменение доступности функции, альтернативные состояния и&nbsp;сценарии, которые могли привести пользователя в&nbsp;тупик.
+            </p>
+            <p>
+              Для&nbsp;каждого такого случая определила, что&nbsp;должно происходить с&nbsp;заявлением, данными и&nbsp;статусами и&nbsp;какое состояние интерфейса увидят
+              родитель и&nbsp;сотрудник школы.
+            </p>
+          </div>
+        </section>
+
+        <section class="case-section" id="handoff">
+          <div class="section-head">
+            <span class="section-kicker">Передача в&nbsp;разработку</span>
+          </div>
+          <div class="text-panel">
+            <p>
+              После&nbsp;согласования flow я описала бизнес-правила, состояния, роли и&nbsp;переходы статусов в&nbsp;Confluence и&nbsp;Jira и&nbsp;синхронизировала спецификацию
+              с&nbsp;продуктом и&nbsp;разработкой.
+            </p>
+          </div>
+          <div class="screen-grid">
+            <figure class="artifact-card">
+              <img src="schooly-handoff-collaboration.png" alt="Команда согласовывает PRD, роли, правила и статусы Schooly" />
+            </figure>
+          </div>
+        </section>
+
+        <section class="case-section" id="result">
+          <div class="section-head">
+            <span class="section-kicker">Результат</span>
+          </div>
+          <div class="text-panel">
+            <p>
+              Уход ученика превратился из&nbsp;ручной цепочки действий в&nbsp;автоматизированный
+              процесс.
+            </p>
+            <p>
+              Раньше заявление запускало целую серию звонков, переписок, уточнений и&nbsp;ручной передачи информации между&nbsp;сотрудниками. Теперь процесс проходит
+              end-to-end внутри Schooly — от&nbsp;решения родителя до&nbsp;обновления данных
+              школы.
+            </p>
+            <p>
+              <strong>1. Для&nbsp;родителя</strong>
+            </p>
+            <p>
+              Не нужно писать или&nbsp;звонить в&nbsp;школу, искать нужного сотрудника и&nbsp;подстраиваться под&nbsp;время работы. Заявление подаётся самостоятельно в&nbsp;приложении, а&nbsp;его дальнейший статус всегда виден там же.
+            </p>
+            <p>
+              <strong>2. Для&nbsp;школы</strong>
+            </p>
+            <p>
+              Заявление автоматически попадает в&nbsp;систему, а&nbsp;сотрудники нужных отделов
+              получают уведомления. Не нужно отдельно подключать администрацию,
+              бухгалтерию и&nbsp;других участников процесса — у&nbsp;каждого уже есть
+              необходимые данные.
+            </p>
+            <p class="result-emphasis">
+              В&nbsp;результате мы сократили количество ручных действий на&nbsp;всём пути —
+              не только при&nbsp;оформлении ухода, но&nbsp;и&nbsp;при&nbsp;обработке его последствий внутри
+              школы.
+            </p>
+          </div>
+        </section>
+
+        <div class="closing-actions">
+          <button class="like-button" type="button" data-like-key="case-schooly-workflow" aria-label="Поставить лайк кейсу">
+            <span class="like-button__count">0</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.8 8.6c0 5.4-8.8 10.4-8.8 10.4S3.2 14 3.2 8.6A4.6 4.6 0 0 1 12 6.7a4.6 4.6 0 0 1 8.8 1.9Z" />
+            </svg>
+          </button>
+          <a class="primary-link" href="case-autosalon.html">Следующий кейс</a>
+        </div>
+
+      </main>
+    </div>
+
+    <footer class="footer">
+      <p>©2026</p>
+      <p>Афоничева Анастасия</p>
+    </footer>
+
+    <nav class="floating-nav" aria-label="Основная навигация">
+      <a class="floating-nav__cv" href="afonicheva-cv.pdf" target="_blank" rel="noopener" aria-label="Скачать CV">
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M12 3v11" />
+          <path d="m7 10 5 5 5-5" />
+          <path d="M5 19h14" />
+        </svg>
+        <span>CV</span>
+      </a>
+      <span class="floating-nav__group">
+        <a href="index.html" aria-current="page">Мои проекты</a>
+        <a href="growth.html">Как&nbsp;я росла</a>
+        <a href="outside.html">За&nbsp;пределами макетов</a>
+      </span>
+      <details class="contact-menu">
+        <summary class="floating-nav__cta" aria-label="Открыть контакты">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M7.5 15.5h-.9a3.6 3.6 0 0 1-3.6-3.6V8.6A3.6 3.6 0 0 1 6.6 5h5.8A3.6 3.6 0 0 1 16 8.6v3.3a3.6 3.6 0 0 1-3.6 3.6H10l-2.5 2.4v-2.4Z" />
+            <path d="M13 18h1.2l2.3 2.1V18h.9a3.6 3.6 0 0 0 3.6-3.6v-3A3.6 3.6 0 0 0 17.4 8H17" />
+          </svg>
+          <span>Написать</span>
+        </summary>
+        <div class="contact-menu__panel" aria-label="Контакты">
+          <a href="https://t.me/afonicheva_anastasi" target="_blank" rel="noopener">
+            <span class="contact-menu__icon">
+              <img src="icon-telegram.webp" alt="" />
+            </span>
+            <span>Telegram</span>
+          </a>
+          <a href="https://max.ru/u/f9LHodD0cOKN7JqvdkjJ8qp6gxit5wG5Px3wO49dWImixJ5llgTWdi1MUFA" target="_blank" rel="noopener">
+            <span class="contact-menu__icon">
+              <img src="icon-max.webp" alt="" />
+            </span>
+            <span>MAX</span>
+          </a>
+          <a href="mailto:storonovaas@gmail.com">
+            <span class="contact-menu__icon">
+              <img src="icon-gmail.webp" alt="" />
+            </span>
+            <span>Почта</span>
+          </a>
+        </div>
+      </details>
+    </nav>
+    <a class="back-to-top" href="#top" aria-label="Вернуться наверх" aria-hidden="true" tabindex="-1">
+      <span>Наверх</span>
+      <svg aria-hidden="true" viewBox="0 0 24 24">
+        <path d="M12 19V5" />
+        <path d="m5 12 7-7 7 7" />
+      </svg>
+    </a>
+    <script src="back-to-top.js"></script>
+  </body>
+</html>
