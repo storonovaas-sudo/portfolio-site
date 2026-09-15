@@ -13,6 +13,12 @@
   gap: 48px;
 }
 
+.page-shell main > *,
+.case-hero > *,
+.case-section > * {
+  min-width: 0;
+}
+
 .case-hero,
 .case-section {
   display: grid;
@@ -801,6 +807,10 @@ body.has-image-lightbox {
     padding: 72px 18px 40px;
   }
 
+  .page-shell main {
+    gap: 40px;
+  }
+
   .case-hero {
     padding-top: 30px;
   }
@@ -856,6 +866,23 @@ body.has-image-lightbox {
 @media (max-width: 560px) {
   .page-shell {
     padding-inline: 14px;
+    --case-heading-size: 19px;
+    --case-heading-line: 25px;
+    --case-body-line: 23px;
+    --case-block-gap: 72px;
+  }
+
+  .page-shell main {
+    gap: 32px;
+  }
+
+  .case-hero,
+  .case-section {
+    gap: 20px;
+  }
+
+  .case-hero {
+    padding-top: 24px;
   }
 
   .hero-visual {
@@ -868,13 +895,61 @@ body.has-image-lightbox {
 
   .hero-actions,
   .closing-actions {
-    align-items: stretch;
-    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
   }
 
   .primary-link,
   .secondary-link,
   .like-button {
+    width: fit-content;
+    min-width: 0;
+  }
+
+  .decision-table,
+  .decision-table tbody,
+  .decision-table tr,
+  .decision-table td {
+    display: block;
     width: 100%;
+  }
+
+  .decision-table thead {
+    display: none;
+  }
+
+  .decision-table tr {
+    padding: 12px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .decision-table td {
+    display: grid;
+    grid-template-columns: minmax(104px, 0.72fr) minmax(0, 1fr);
+    gap: 12px;
+    padding: 6px 0;
+  }
+
+  .decision-table td::before {
+    color: var(--muted);
+    font-size: var(--description-size);
+    line-height: var(--description-line);
+  }
+
+  .decision-table td:nth-child(1)::before {
+    content: "Инсайт";
+  }
+
+  .decision-table td:nth-child(2)::before {
+    content: "Риск для сделки";
+  }
+
+  .decision-table td:nth-child(3)::before {
+    content: "Возможность";
+  }
+
+  .decision-table td:nth-child(4)::before {
+    content: "Решение";
   }
 }

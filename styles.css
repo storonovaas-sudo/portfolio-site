@@ -40,6 +40,54 @@ body {
   font-weight: 400;
 }
 
+body.is-site-loading {
+  overflow: hidden;
+}
+
+.site-loader {
+  position: fixed;
+  z-index: 10000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  transform: translateY(0);
+  transition: transform 720ms cubic-bezier(0.72, 0, 0.28, 1);
+}
+
+.site-loader--leaving {
+  transform: translateY(100%);
+  pointer-events: none;
+}
+
+.site-loader__content {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  padding: 8px 12px 12px;
+  color: var(--text);
+  font-size: clamp(42px, 7vw, 68px);
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -0.065em;
+  font-variant-numeric: tabular-nums;
+}
+
+.site-loader__sign {
+  margin-left: 0.035em;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -1081,8 +1129,27 @@ h1 {
 }
 
 @media (max-width: 560px) {
+  :root {
+    --display-size: 32px;
+    --display-line: 38px;
+    --heading-1-size: 28px;
+    --heading-1-line: 34px;
+    --heading-2-size: 22px;
+    --heading-2-line: 28px;
+  }
+
   .page {
     padding-inline: 14px;
+  }
+
+  .intro.hero-intro {
+    padding-top: 20px;
+    padding-bottom: 64px;
+  }
+
+  .hero-portrait {
+    width: min(280px, 82vw);
+    height: 250px;
   }
 
   .profile {
@@ -1180,7 +1247,66 @@ h1 {
     min-height: 240px;
   }
 
-.photo-placeholder--hero {
+  .photo-placeholder--hero {
     min-height: 300px;
+  }
+
+  .floating-nav {
+    right: 0;
+    left: 0;
+    top: 12px;
+    justify-content: center;
+    width: 100%;
+    max-width: none;
+    pointer-events: none;
+    transform: none;
+  }
+
+  .floating-nav__group {
+    width: auto;
+    max-width: calc(100vw - 24px);
+    overflow-x: auto;
+    pointer-events: auto;
+    scrollbar-width: none;
+  }
+
+  .floating-nav__group::-webkit-scrollbar {
+    display: none;
+  }
+
+  .floating-nav__group a,
+  .floating-nav__group a:first-child,
+  .floating-nav__group a[aria-current="page"] {
+    display: inline-flex;
+    padding-inline: 8px;
+    font-size: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .floating-nav__cv {
+    position: fixed;
+    bottom: max(16px, env(safe-area-inset-bottom));
+    left: calc(50% - 108px);
+    pointer-events: auto;
+  }
+
+  .contact-menu {
+    position: fixed;
+    bottom: max(16px, env(safe-area-inset-bottom));
+    left: calc(50% - 16px);
+    pointer-events: auto;
+  }
+
+  .contact-menu__panel {
+    top: auto;
+    bottom: calc(100% + 10px);
+  }
+
+  .back-to-top {
+    bottom: 72px;
+  }
+
+  .footer {
+    padding-bottom: 112px;
   }
 }
