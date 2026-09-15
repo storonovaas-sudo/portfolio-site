@@ -27,6 +27,10 @@ floatingNavs.forEach((nav) => {
   nav.prepend(menuButton);
 
   menuButton.addEventListener("click", () => {
+    contactMenus.forEach((menu) => {
+      menu.open = false;
+    });
+
     const isOpen = nav.classList.toggle("is-menu-open");
     menuButton.setAttribute("aria-expanded", String(isOpen));
     menuButton.setAttribute("aria-label", isOpen ? "Закрыть меню" : "Открыть меню");
@@ -36,6 +40,24 @@ floatingNavs.forEach((nav) => {
     nav.classList.remove("is-menu-open");
     menuButton.setAttribute("aria-expanded", "false");
     menuButton.setAttribute("aria-label", "Открыть меню");
+  });
+});
+
+contactMenus.forEach((menu) => {
+  menu.addEventListener("toggle", () => {
+    if (!menu.open) {
+      return;
+    }
+
+    floatingNavs.forEach((nav) => {
+      nav.classList.remove("is-menu-open");
+      const menuButton = nav.querySelector(".floating-nav__menu");
+
+      if (menuButton) {
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Открыть меню");
+      }
+    });
   });
 });
 
