@@ -823,7 +823,7 @@ body.has-image-lightbox {
   .case-section > .artifact-card,
   .summary-block > .artifact-card,
   .closing-panel > .artifact-card--full-width {
-    width: calc(100vw - 28px);
+    width: calc(100vw - 36px);
   }
 
   .artifact-grid--paired {
@@ -883,6 +883,17 @@ body.has-image-lightbox {
 
   .case-hero {
     padding-top: 36px;
+  }
+
+  .hero-visual,
+  .case-intro-visual,
+  .artifact-grid,
+  .screen-grid,
+  .case-section > .screen-placeholder,
+  .case-section > .artifact-card,
+  .summary-block > .artifact-card,
+  .closing-panel > .artifact-card--full-width {
+    width: calc(100vw - 32px);
   }
 
   .back-to-projects {
