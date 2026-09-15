@@ -1,7 +1,7 @@
 const backToTopButtons = document.querySelectorAll(".back-to-top");
 const contactMenus = document.querySelectorAll(".contact-menu");
 const floatingNavs = document.querySelectorAll(".floating-nav");
-const caseImages = document.querySelectorAll(".hero-visual > img, .artifact-card > img");
+const caseImages = document.querySelectorAll(".hero-visual img, .artifact-card > img");
 
 floatingNavs.forEach((nav) => {
   const group = nav.querySelector(".floating-nav__group");
