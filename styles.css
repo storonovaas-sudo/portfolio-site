@@ -597,9 +597,18 @@ h1 {
   height: 44px;
   margin: -14px -14px 0 0;
   color: var(--muted);
-  font-size: 21px;
   line-height: 1;
   transition: color 180ms ease, transform 180ms ease;
+}
+
+.review-card__link svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
 }
 
 .review-card__link:hover {
@@ -791,6 +800,10 @@ h1 {
   border-radius: 100px;
   background: linear-gradient(180deg, var(--soft) 0%, var(--soft-2) 100%);
   box-shadow: var(--shadow);
+}
+
+.floating-nav__menu {
+  display: none;
 }
 
 .floating-nav__group a {
@@ -1136,15 +1149,17 @@ h1 {
     --heading-1-line: 34px;
     --heading-2-size: 22px;
     --heading-2-line: 28px;
+    --description-size: 16px;
+    --description-line: 20px;
   }
 
   .page {
-    padding-inline: 14px;
+    padding: 144px 16px 40px;
   }
 
   .intro.hero-intro {
-    padding-top: 20px;
-    padding-bottom: 64px;
+    padding-top: 36px;
+    padding-bottom: 136px;
   }
 
   .hero-portrait {
@@ -1171,8 +1186,18 @@ h1 {
     gap: 48px;
   }
 
+  .work-case__meta {
+    display: grid;
+    justify-content: start;
+    gap: 14px;
+  }
+
+  .work-case__tags {
+    justify-content: flex-start;
+  }
+
   .work-case__image {
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 672 / 420;
   }
 
   .article {
@@ -1252,61 +1277,91 @@ h1 {
   }
 
   .floating-nav {
-    right: 0;
-    left: 0;
-    top: 12px;
-    justify-content: center;
-    width: 100%;
-    max-width: none;
-    pointer-events: none;
-    transform: none;
+    right: auto;
+    left: 50%;
+    top: max(16px, env(safe-area-inset-top));
+    justify-content: flex-start;
+    width: fit-content;
+    max-width: calc(100% - 24px);
+    pointer-events: auto;
+    transform: translateX(-50%);
   }
 
   .floating-nav__group {
-    width: auto;
-    max-width: calc(100vw - 24px);
-    overflow-x: auto;
-    pointer-events: auto;
-    scrollbar-width: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    display: none;
+    width: max-content;
+    min-width: 232px;
+    height: auto;
+    padding: 6px;
+    gap: 2px;
+    border-radius: 18px;
+    grid-template-columns: 1fr;
   }
 
-  .floating-nav__group::-webkit-scrollbar {
-    display: none;
+  .floating-nav.is-menu-open .floating-nav__group {
+    display: grid;
   }
 
   .floating-nav__group a,
   .floating-nav__group a:first-child,
   .floating-nav__group a[aria-current="page"] {
     display: inline-flex;
-    padding-inline: 8px;
-    font-size: 12px;
-    letter-spacing: -0.01em;
+    justify-content: flex-start;
+    height: 40px;
+    padding: 10px 14px;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0;
   }
 
   .floating-nav__cv {
-    position: fixed;
-    bottom: max(16px, env(safe-area-inset-bottom));
-    left: calc(50% - 108px);
-    pointer-events: auto;
+    position: static;
+    width: 82px;
+    height: 40px;
+    padding: 8px 12px;
+    font-size: 16px;
   }
 
   .contact-menu {
-    position: fixed;
-    bottom: max(16px, env(safe-area-inset-bottom));
-    left: calc(50% - 16px);
-    pointer-events: auto;
+    position: static;
   }
 
   .contact-menu__panel {
-    top: auto;
-    bottom: calc(100% + 10px);
+    top: calc(100% + 10px);
+    bottom: auto;
+    right: 0;
   }
 
-  .back-to-top {
-    bottom: 72px;
+  .floating-nav__cta {
+    width: 138px;
+    height: 40px;
+    padding: 8px 14px 8px 10px;
+    font-size: 16px;
   }
 
-  .footer {
-    padding-bottom: 112px;
+  .floating-nav__menu {
+    display: grid;
+    flex: 0 0 auto;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #000000;
+    box-shadow: var(--shadow);
+  }
+
+  .floating-nav__menu svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-width: 1.6;
   }
 }

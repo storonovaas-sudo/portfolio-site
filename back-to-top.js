@@ -1,7 +1,43 @@
 const backToTopButtons = document.querySelectorAll(".back-to-top");
 const contactMenus = document.querySelectorAll(".contact-menu");
+const floatingNavs = document.querySelectorAll(".floating-nav");
 const likeButtons = document.querySelectorAll(".like-button");
 const caseImages = document.querySelectorAll(".hero-visual > img, .artifact-card > img");
+
+floatingNavs.forEach((nav) => {
+  const group = nav.querySelector(".floating-nav__group");
+
+  if (!group) {
+    return;
+  }
+
+  const menuButton = document.createElement("button");
+  menuButton.className = "floating-nav__menu";
+  menuButton.type = "button";
+  menuButton.setAttribute("aria-label", "Открыть меню");
+  menuButton.setAttribute("aria-expanded", "false");
+  menuButton.innerHTML = `
+    <svg aria-hidden="true" viewBox="0 0 24 24">
+      <path d="M4 7h16" />
+      <path d="M4 12h16" />
+      <path d="M4 17h16" />
+    </svg>
+  `;
+
+  nav.prepend(menuButton);
+
+  menuButton.addEventListener("click", () => {
+    const isOpen = nav.classList.toggle("is-menu-open");
+    menuButton.setAttribute("aria-expanded", String(isOpen));
+    menuButton.setAttribute("aria-label", isOpen ? "Закрыть меню" : "Открыть меню");
+  });
+
+  group.addEventListener("click", () => {
+    nav.classList.remove("is-menu-open");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "Открыть меню");
+  });
+});
 
 const updateBackToTop = () => {
   const isVisible = window.scrollY > window.innerHeight * 0.8;
@@ -28,6 +64,18 @@ document.addEventListener("click", (event) => {
   contactMenus.forEach((menu) => {
     if (menu.open && !menu.contains(event.target)) {
       menu.open = false;
+    }
+  });
+
+  floatingNavs.forEach((nav) => {
+    if (nav.classList.contains("is-menu-open") && !nav.contains(event.target)) {
+      nav.classList.remove("is-menu-open");
+      const menuButton = nav.querySelector(".floating-nav__menu");
+
+      if (menuButton) {
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Открыть меню");
+      }
     }
   });
 });
