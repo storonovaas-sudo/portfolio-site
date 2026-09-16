@@ -967,3 +967,19 @@ body.has-image-lightbox {
     content: "Решение";
   }
 }
+
+.like-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.like-status {
+  max-width: 320px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--muted, #626262);
+}
+
+.like-status:empty {
+  display: none;
+}

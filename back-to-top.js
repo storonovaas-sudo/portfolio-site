@@ -1,7 +1,6 @@
 const backToTopButtons = document.querySelectorAll(".back-to-top");
 const contactMenus = document.querySelectorAll(".contact-menu");
 const floatingNavs = document.querySelectorAll(".floating-nav");
-const likeButtons = document.querySelectorAll(".like-button");
 const caseImages = document.querySelectorAll(".hero-visual > img, .artifact-card > img");
 
 floatingNavs.forEach((nav) => {
@@ -102,51 +101,6 @@ document.addEventListener("click", (event) => {
   });
 });
 
-likeButtons.forEach((button) => {
-  const key = `portfolioLike:${button.dataset.likeKey || window.location.pathname}`;
-  const likedKey = `${key}:liked`;
-  const countNode = button.querySelector(".like-button__count");
-  let storedValue = "0";
-  let storedLiked = "false";
-
-  try {
-    storedValue = window.localStorage.getItem(key) || "0";
-    storedLiked = window.localStorage.getItem(likedKey) || "false";
-  } catch {
-    storedValue = "0";
-    storedLiked = "false";
-  }
-
-  const savedCount = Number.parseInt(storedValue, 10);
-  let count = Number.isFinite(savedCount) ? savedCount : 0;
-  let isLiked = storedLiked === "true";
-
-  if (countNode) {
-    countNode.textContent = String(count);
-  }
-
-  button.classList.toggle("is-liked", isLiked);
-  button.setAttribute("aria-pressed", String(isLiked));
-
-  button.addEventListener("click", () => {
-    isLiked = !isLiked;
-    count = Math.max(0, count + (isLiked ? 1 : -1));
-
-    try {
-      window.localStorage.setItem(key, String(count));
-      window.localStorage.setItem(likedKey, String(isLiked));
-    } catch {
-      // Keep the visible count updated even when storage is unavailable.
-    }
-
-    button.classList.toggle("is-liked", isLiked);
-    button.setAttribute("aria-pressed", String(isLiked));
-
-    if (countNode) {
-      countNode.textContent = String(count);
-    }
-  });
-});
 
 if (caseImages.length) {
   const lightbox = document.createElement("div");
