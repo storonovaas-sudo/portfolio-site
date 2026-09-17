@@ -9,14 +9,14 @@
       content="Личная статья Анастасии Афоничевой о пути в дизайн, эмпатии, спорте, учебе и командной жизни."
     />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=20260915-4" />
+    <link rel="stylesheet" href="styles.css?v=20260916-projects-anchor" />
   </head>
   <body>
     <script src="site-loader.js?v=20260915-2"></script>
     <main class="page article-page" id="top">
       <article class="article" aria-label="Личная история">
         <figure class="article-photo photo-placeholder--hero">
-<img decoding="async" fetchpriority="high" src="outside-hero.webp" alt="Анастасия вне работы" />
+<img decoding="async" fetchpriority="high" src="outside-final-swing.jpg" alt="Анастасия на качелях в саду с птицами" />
         </figure>
 
         <div class="article-copy">
@@ -32,7 +32,7 @@
             Со&nbsp;временем я&nbsp;поняла, что&nbsp;мне очень не&nbsp;хватает творчества, свободы
             и&nbsp;возможности придумывать новое. Так я&nbsp;вернулась к&nbsp;тому, что&nbsp;всегда
             любила, - сначала к&nbsp;визуальному, а&nbsp;затем и&nbsp;к&nbsp;продуктовому дизайну.
-            При этом медицинский опыт никуда не&nbsp;исчез: он&nbsp;научил меня ответственности,
+            При&nbsp;этом медицинский опыт никуда не&nbsp;исчез: он&nbsp;научил меня ответственности,
             внимательности и&nbsp;бережному отношению к&nbsp;людям.
           </p>
         </div>
@@ -65,15 +65,19 @@
           </p>
         </div>
 
-        <figure class="article-photo photo-placeholder--wide">
-          <img loading="lazy" decoding="async" src="outside-team-run.jpg" alt="Команда после забега" />
-        </figure>
+        <div class="photo-grid photo-grid--pair">
+          <figure class="article-photo photo-placeholder">
+            <img loading="lazy" decoding="async" src="outside-team-run.jpg" alt="Команда после забега" />
+          </figure>
+          <figure class="article-photo photo-placeholder">
+            <img loading="lazy" decoding="async" src="outside-run-portrait.jpg" alt="Анастасия на забеге" />
+          </figure>
+        </div>
 
         <div class="article-copy">
           <p>
             Ещё я&nbsp;постоянно учусь. Люблю офлайн-мероприятия, лекции, дизайн-фестивали,
-            курсы и&nbsp;книги. Мне интересно узнавать новое не&nbsp;только про дизайн, но&nbsp;и&nbsp;про
-            людей, культуру, технологии и&nbsp;всё, что&nbsp;помогает смотреть на&nbsp;мир
+            курсы и&nbsp;книги. Мне интересно узнавать новое не&nbsp;только про&nbsp;дизайн, но&nbsp;и&nbsp;про&nbsp;людей, культуру, технологии и&nbsp;всё, что&nbsp;помогает смотреть на&nbsp;мир
             чуть шире.
           </p>
         </div>
@@ -92,31 +96,43 @@
 
         <div class="article-copy">
           <p>
-            И&nbsp;я&nbsp;точно не&nbsp;тот человек, который приходит на&nbsp;работу только ради задач
+            И&nbsp;я&nbsp;точно&nbsp;не&nbsp;тот человек, который приходит на&nbsp;работу только ради&nbsp;задач
             и&nbsp;созвонов. Мне нравится командная жизнь: участвовать в&nbsp;забегах с&nbsp;коллегами,
             придумывать активности, организовывать онлайн-корпоративы и&nbsp;готовить
             небольшие шутки и&nbsp;сюрпризы на&nbsp;свой день рождения.
           </p>
 
           <p>
-            Наверное, за&nbsp;пределами макетов я&nbsp;примерно такая же, как&nbsp;и&nbsp;внутри них:
+            Наверное, за&nbsp;пределами макетов я&nbsp;примерно такая же, как&nbsp;и&nbsp;внутри&nbsp;них:
             любопытная, внимательная к&nbsp;людям, немного сентиментальная и&nbsp;всегда
             готовая что-нибудь придумать.
           </p>
         </div>
 
         <figure class="article-photo photo-placeholder--wide">
-<img loading="lazy" decoding="async" src="outside-final.webp" alt="Анастасия на прогулке" />
+<img loading="lazy" decoding="async" src="outside-hero-park.jpg" alt="Анастасия на прогулке в парке" />
         </figure>
       </article>
     </main>
 
     <footer class="footer">
-      <p>©2026</p>
-      <p>Афоничева Анастасия</p>
+      <div class="footer__copyright">
+        <p>©2026</p>
+        <p>Афоничева Анастасия</p>
+      </div>
+      <img class="footer__illustration" src="footer-illustration.png" width="240" height="240" loading="lazy" decoding="async" alt="Иллюстрация Анастасии с приветственным жестом" />
     </footer>
 
     <nav class="floating-nav" aria-label="Основная навигация">
+      <a class="floating-nav__identity" href="/#top" aria-label="Афоничева Анастасия — главная">
+        <img src="anastasia-avatar.png" width="36" height="36" alt="" />
+        <span>Афоничева Анастасия</span>
+      </a>
+      <span class="floating-nav__group">
+        <a href="/#projects">Мои проекты</a>
+        <a href="/growth">Как&nbsp;я росла</a>
+        <a href="/outside" aria-current="page">За&nbsp;пределами макетов</a>
+      </span>
       <a class="floating-nav__cv" href="afonicheva-cv.pdf" target="_blank" rel="noopener" aria-label="Скачать CV">
         <svg aria-hidden="true" viewBox="0 0 24 24">
           <path d="M12 3v11" />
@@ -125,11 +141,6 @@
         </svg>
         <span>CV</span>
       </a>
-      <span class="floating-nav__group">
-        <a href="/">Мои проекты</a>
-        <a href="/growth">Как я росла</a>
-        <a href="/outside" aria-current="page">За пределами макетов</a>
-      </span>
       <details class="contact-menu">
         <summary class="floating-nav__cta" aria-label="Открыть контакты">
           <svg aria-hidden="true" viewBox="0 0 24 24">
@@ -167,6 +178,6 @@
         <path d="m5 12 7-7 7 7" />
       </svg>
     </a>
-    <script src="back-to-top.js?v=20260915-3"></script>
+    <script src="back-to-top.js?v=20260916-footer-2"></script>
   </body>
 </html>

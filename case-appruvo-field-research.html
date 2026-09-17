@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Упростила сценарий сделки после&nbsp;наблюдений в&nbsp;дилерском центре | Appruvo</title>
+    <meta
+      name="description"
+      content="Во время полевых исследований в дилерском центре я заметила повторяющееся действие, которое не соответствовало основному сценарию. Разобравшись в причине вместе с командой, мы вынесли нужную информацию в интерфейс — после этого регулярная необходимость в лишнем шаге практически исчезла."
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css?v=20260916-projects-anchor" />
+    <link rel="stylesheet" href="case-study.css?v=20260917-solution" />
+  </head>
+  <body>
+    <script src="site-loader.js?v=20260915-2"></script>
+    <div class="page-shell" id="top">
+      <main>
+        <section class="case-hero">
+          <div class="case-intro">
+            <a class="back-to-projects" href="/#projects">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M19 12H5" />
+                <path d="m12 19-7-7 7-7" />
+              </svg>
+              <span>Все проекты</span>
+            </a>
+            <div class="case-company">
+<img loading="lazy" decoding="async" src="logo-appruvo.webp" alt="" />
+              <div class="case-company__text">
+                <h1>Appruvo</h1>
+                <p>Product Designer · 2025 - по н.в.</p>
+              </div>
+            </div>
+            <p class="hero-description">
+              Во&nbsp;время полевых исследований в&nbsp;дилерском центре я заметила повторяющееся действие, которое не&nbsp;соответствовало основному сценарию. Разобравшись в&nbsp;причине вместе с&nbsp;командой, мы вынесли нужную информацию в&nbsp;интерфейс — после&nbsp;этого регулярная необходимость в&nbsp;лишнем шаге практически исчезла.
+            </p>
+          </div>
+          <figure class="case-intro-visual">
+            <img decoding="async" fetchpriority="high" src="appruvo-field-research-hero.jpg" width="3024" height="4032" alt="Автомобили перед зданием дилерского центра" />
+          </figure>
+        </section>
+
+        <section class="case-section" id="observation">
+          <div class="section-head"><span class="section-kicker">Наблюдение в&nbsp;поле</span></div>
+          <div class="text-panel">
+            <p>Я наблюдала полный процесс сделки в&nbsp;дилерском центре — от&nbsp;первого обращения клиента до&nbsp;выдачи автомобиля, чтобы&nbsp;увидеть, как&nbsp;сотрудники реально работают с&nbsp;системой на&nbsp;каждом этапе.</p>
+            <p>В&nbsp;этом процессе заметила повторяющийся паттерн: почти для&nbsp;каждого одобренного автомобиля кредитный специалист скачивал коммерческое предложение (далее — КП).</p>
+            <p>При&nbsp;этом документ не&nbsp;печатали, не&nbsp;передавали клиенту и&nbsp;часто закрывали сразу после&nbsp;просмотра.</p>
+            <p>Это выглядело как&nbsp;обходной шаг, поэтому&nbsp;я решила разобраться, что&nbsp;именно специалисты ищут в&nbsp;КП и&nbsp;почему этой информации им не&nbsp;хватает в&nbsp;основном сценарии.</p>
+          </div>
+          <figure class="artifact-card">
+            <img loading="lazy" decoding="async" src="appruvo-field-observation.png" width="5142" height="2187" alt="Дилерский центр во время полевого исследования и интерфейс Appruvo" />
+          </figure>
+        </section>
+
+        <section class="case-section" id="findings">
+          <div class="section-head"><span class="section-kicker">Что&nbsp;выяснили</span></div>
+          <div class="text-panel">
+            <p>В&nbsp;разговоре со&nbsp;специалистами выяснилось, что&nbsp;само коммерческое предложение им в&nbsp;этот момент не&nbsp;нужно.</p>
+            <p>Внутри&nbsp;документа они искали <strong>сумму удержания с&nbsp;дилера</strong> — она могла зависеть от&nbsp;возраста автомобиля, перепробега или&nbsp;отклонения его стоимости от&nbsp;рыночной.</p>
+            <p>Эта сумма нужна специалисту для&nbsp;расчёта экономики сделки: понимая размер удержания, он может определить, какой объём дополнительных услуг можно включить в&nbsp;продажу.</p>
+            <p>При&nbsp;этом посмотреть удержание заранее непосредственно в&nbsp;интерфейсе было нельзя. Оно появлялось либо&nbsp;внутри&nbsp;КП, либо&nbsp;уже на&nbsp;итоговых условиях после&nbsp;старта сделки.</p>
+            <p>В&nbsp;итоге полноценный документ фактически использовался как&nbsp;способ посмотреть одно число.</p>
+          </div>
+        </section>
+
+        <section class="case-section" id="problem">
+          <div class="section-head"><span class="section-kicker">Проблема</span></div>
+          <div class="text-panel">
+            <p><strong>Проблема оказалась шире одного лишнего действия.</strong> Сумма удержания напрямую влияла на&nbsp;экономику сделки, но&nbsp;дилер не&nbsp;мог увидеть её в&nbsp;момент, когда&nbsp;решал, стоит ли&nbsp;продолжать оформление.</p>
+            <p>Из-за&nbsp;этого специалисты использовали обходные пути: скачивали отдельный документ ради&nbsp;одного значения или&nbsp;запускали сделку раньше времени, чтобы&nbsp;добраться до&nbsp;итоговых условий. Это усложняло работу дилера и&nbsp;создавало лишние операции уже на&nbsp;нашей стороне.</p>
+          </div>
+          <figure class="artifact-card">
+            <img loading="lazy" decoding="async" src="appruvo-field-research-problem.png" width="5142" height="2568" alt="Основные последствия: поздняя доступность суммы удержания, скачивание КП ради одного значения, преждевременный запуск сделок и зависимость рабочего сценария от документа" />
+          </figure>
+        </section>
+
+        <section class="case-section" id="task">
+          <div class="section-head"><span class="section-kicker">Задача</span></div>
+          <div class="text-panel">
+            <p>Дать дилеру всю информацию для&nbsp;принятия решения <strong>до&nbsp;старта сделки</strong>, чтобы&nbsp;убрать обходные сценарии, сократить лишние действия и&nbsp;снизить количество преждевременно запущенных сделок.</p>
+            <p>Для&nbsp;этого нужно было встроить сумму удержания в&nbsp;основной сценарий работы с&nbsp;автомобилем — там, где специалист оценивает экономику и&nbsp;решает, продолжать оформление или&nbsp;нет.</p>
+          </div>
+        </section>
+
+        <section class="case-section" id="solution">
+          <div class="section-head"><span class="section-kicker">Решение</span></div>
+          <div class="text-panel">
+            <p>Вместе с&nbsp;командой мы определили момент, когда&nbsp;специалисту действительно нужна сумма удержания: <strong>до&nbsp;старта сделки, когда&nbsp;он оценивает её экономику и&nbsp;решает, стоит ли&nbsp;продолжать оформление</strong>.</p>
+          </div>
+          <figure class="artifact-card">
+            <img loading="lazy" decoding="async" src="appruvo-field-scenario-analysis.png?v=d0c4d9ee9c" width="5142" height="4428" alt="Анализ сценариев: обходные пути через скачивание КП и преждевременный запуск сделки в сравнении с прямым сценарием, где сумма удержания доступна до старта сделки" />
+          </figure>
+          <div class="text-panel">
+            <p>Поэтому&nbsp;я предложила показывать удержание <strong>рядом с&nbsp;условиями по&nbsp;автомобилю</strong> — в&nbsp;том же&nbsp;контексте, где специалист уже сравнивает ключевые параметры и&nbsp;принимает решение по&nbsp;сделке.</p>
+            <p>Мы не&nbsp;стали создавать отдельный экран или&nbsp;новый сценарий: проблема была не&nbsp;в&nbsp;отсутствии функции, а&nbsp;в&nbsp;том, что&nbsp;важная информация находилась слишком поздно и&nbsp;не&nbsp;в&nbsp;том месте.</p>
+            <p>Небольшое изменение интерфейса устраняло сразу два обходных сценария — скачивание КП ради&nbsp;одного значения и&nbsp;преждевременный запуск сделки для&nbsp;просмотра итоговых условий.</p>
+          </div>
+          <figure class="artifact-card">
+            <img loading="lazy" decoding="async" src="appruvo-field-solution-car.png" width="5142" height="3888" alt="Сравнение экрана одобренного автомобиля до и после добавления суммы удержания" />
+          </figure>
+          <figure class="artifact-card">
+            <img loading="lazy" decoding="async" src="appruvo-field-solution-terms.png" width="5142" height="3888" alt="Сравнение экрана подбора условий до и после добавления суммы удержания рядом с автомобилем" />
+          </figure>
+        </section>
+
+        <section class="case-section" id="result">
+          <div class="section-head"><span class="section-kicker">Результат</span></div>
+          <div class="text-panel">
+            <p><strong>Обходной сценарий практически исчез.</strong> После&nbsp;того как&nbsp;сумма удержания появилась рядом с&nbsp;условиями автомобиля, регулярные скачивания КП почти прекратились: вместо&nbsp;постоянных ежедневных скачиваний график практически вышел в&nbsp;ноль.</p>
+          </div>
+          <figure class="artifact-card">
+            <img loading="lazy" decoding="async" src="appruvo-field-research-results.png" width="5142" height="1713" alt="График скачиваний коммерческого предложения: ежедневные пики до изменения и почти нулевые значения после" />
+          </figure>
+          <div class="text-panel">
+            <p>Я отдельно проверила оставшиеся единичные скачивания. В&nbsp;обоих случаях документ использовали уже по&nbsp;прямому назначению — он понадобился сотрудникам для&nbsp;разбора спорной ситуации по&nbsp;сделке.</p>
+            <p>Это подтвердило исходную гипотезу: <strong>специалистам был нужен не&nbsp;сам документ, а&nbsp;конкретная информация в&nbsp;правильный момент сценария.</strong> После&nbsp;её переноса в&nbsp;интерфейс необходимость использовать КП как&nbsp;обходной путь исчезла.</p>
+            <p>Для&nbsp;бизнеса это означало <strong>меньше преждевременно запущенных сделок, меньше ручных откатов статусов и&nbsp;меньшую зависимость рабочего процесса от&nbsp;генерации документа.</strong></p>
+          </div>
+        </section>
+
+        <div class="closing-actions">
+          <button class="like-button" type="button" data-like-key="case-appruvo-field-research" aria-label="Поставить лайк кейсу">
+            <span class="like-button__count">0</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.8 8.6c0 5.4-8.8 10.4-8.8 10.4S3.2 14 3.2 8.6A4.6 4.6 0 0 1 12 6.7a4.6 4.6 0 0 1 8.8 1.9Z" /></svg>
+          </button>
+          <a class="primary-link" href="/case-schooly-consent">Следующий кейс</a>
+        </div>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <div class="footer__copyright">
+        <p>©2026</p>
+        <p>Афоничева Анастасия</p>
+      </div>
+      <img class="footer__illustration" src="footer-illustration.png" width="240" height="240" loading="lazy" decoding="async" alt="Иллюстрация Анастасии с приветственным жестом" />
+    </footer>
+
+    <nav class="floating-nav" aria-label="Основная навигация">
+      <a class="floating-nav__identity" href="/#top" aria-label="Афоничева Анастасия — главная">
+        <img src="anastasia-avatar.png" width="36" height="36" alt="" />
+        <span>Афоничева Анастасия</span>
+      </a>
+      <span class="floating-nav__group">
+        <a href="/#projects" aria-current="page">Мои проекты</a>
+        <a href="/growth">Как&nbsp;я росла</a>
+        <a href="/outside">За пределами макетов</a>
+      </span>
+      <a class="floating-nav__cv" href="afonicheva-cv.pdf" target="_blank" rel="noopener" aria-label="Скачать CV">
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M12 3v11" />
+          <path d="m7 10 5 5 5-5" />
+          <path d="M5 19h14" />
+        </svg>
+        <span>CV</span>
+      </a>
+      <details class="contact-menu">
+        <summary class="floating-nav__cta" aria-label="Открыть контакты">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M7.5 15.5h-.9a3.6 3.6 0 0 1-3.6-3.6V8.6A3.6 3.6 0 0 1 6.6 5h5.8A3.6 3.6 0 0 1 16 8.6v3.3a3.6 3.6 0 0 1-3.6 3.6H10l-2.5 2.4v-2.4Z" />
+            <path d="M13 18h1.2l2.3 2.1V18h.9a3.6 3.6 0 0 0 3.6-3.6v-3A3.6 3.6 0 0 0 17.4 8H17" />
+          </svg>
+          <span>Написать</span>
+        </summary>
+        <div class="contact-menu__panel" aria-label="Контакты">
+          <a href="https://t.me/afonicheva_anastasi" target="_blank" rel="noopener">
+            <span class="contact-menu__icon"><img src="icon-telegram.webp" alt="" /></span>
+            <span>Telegram</span>
+          </a>
+          <a href="https://max.ru/u/f9LHodD0cOKN7JqvdkjJ8qp6gxit5wG5Px3wO49dWImixJ5llgTWdi1MUFA" target="_blank" rel="noopener">
+            <span class="contact-menu__icon"><img src="icon-max.webp" alt="" /></span>
+            <span>MAX</span>
+          </a>
+          <a href="mailto:storonovaas@gmail.com">
+            <span class="contact-menu__icon"><img src="icon-gmail.webp" alt="" /></span>
+            <span>Почта</span>
+          </a>
+        </div>
+      </details>
+    </nav>
+
+    <a class="back-to-top" href="#top" aria-label="Вернуться наверх" aria-hidden="true" tabindex="-1">
+      <span>Наверх</span>
+      <svg aria-hidden="true" viewBox="0 0 24 24">
+        <path d="M12 19V5" />
+        <path d="m5 12 7-7 7 7" />
+      </svg>
+    </a>
+    <script src="likes.js?v=20260916-1"></script>
+    <script src="back-to-top.js?v=20260916-footer-2"></script>
+  </body>
+</html>

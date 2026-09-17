@@ -419,6 +419,10 @@
 }
 
 .solution-card h3,
+#findings .text-panel strong,
+#problem .text-panel strong,
+#task .text-panel strong,
+#solution .text-panel strong,
 #final-solution .text-panel strong,
 #result .text-panel strong {
   color: #333333;
@@ -598,6 +602,7 @@
 .artifact-card img {
   overflow: hidden;
   width: 100%;
+  height: auto;
   border-radius: 16px;
   background: #f4f4f4;
 }
@@ -831,7 +836,9 @@ body.has-image-lightbox {
   .case-section > .artifact-card,
   .summary-block > .artifact-card,
   .closing-panel > .artifact-card--full-width {
-    width: calc(100vw - 36px);
+    width: 100%;
+    margin-left: 0;
+    transform: none;
   }
 
   .artifact-grid--paired {
@@ -901,7 +908,9 @@ body.has-image-lightbox {
   .case-section > .artifact-card,
   .summary-block > .artifact-card,
   .closing-panel > .artifact-card--full-width {
-    width: calc(100vw - 32px);
+    width: 100%;
+    margin-left: 0;
+    transform: none;
   }
 
   .back-to-projects {
@@ -974,4 +983,57 @@ body.has-image-lightbox {
   .decision-table td:nth-child(4)::before {
     content: "Решение";
   }
+}
+
+.like-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.like-status {
+  max-width: 320px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--muted, #626262);
+}
+
+.like-status:empty {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .page-shell main,
+  .case-hero,
+  .case-intro,
+  .case-section,
+  .text-panel,
+  .summary-block,
+  .closing-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page-shell main * { min-width: 0; }
+  .page-shell main p,
+  .page-shell main li,
+  .page-shell main h2,
+  .page-shell main h3 { overflow-wrap: anywhere; }
+
+  .section-kicker {
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+@media (max-width: 760px) {
+  .closing-actions { flex-wrap: wrap; }
+  .closing-actions > .like-button,
+  .closing-actions > .primary-link { flex-shrink: 0; }
+  .closing-actions > .like-status {
+    flex-basis: 100%;
+    max-width: 100%;
+    order: 1;
+    text-align: center;
+  }
+  .page-shell main .like-button__count { min-width: 1ch; flex-shrink: 0; }
 }

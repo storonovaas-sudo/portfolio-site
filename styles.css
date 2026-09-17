@@ -414,6 +414,7 @@ h1 {
 }
 
 #projects {
+  scroll-margin-top: 88px;
   padding-top: 0;
 }
 
@@ -901,11 +902,21 @@ h1 {
 
 .footer {
   display: grid;
-  place-items: center;
-  min-height: 164px;
-  padding: 44px 24px 88px;
+  justify-items: center;
+  align-content: end;
+  gap: 32px;
+  padding: 72px 24px 0;
+  overflow: hidden;
   background: #000000;
-  color: var(--muted);
+  color: #8a8a8a;
+  text-align: center;
+}
+
+.footer__illustration {
+  display: block;
+  width: 240px;
+  max-width: 100%;
+  height: auto;
 }
 
 .footer p {
@@ -1340,7 +1351,7 @@ h1 {
   }
 
   .not-found__footer {
-    padding-bottom: 24px;
+    padding-bottom: 0;
   }
 
   .intro.hero-intro {
@@ -1562,4 +1573,50 @@ h1 {
     stroke-linecap: round;
     stroke-width: 1.6;
   }
+}
+
+/* Identity bubble shares the original navigation button dimensions. */
+.floating-nav__identity {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 6px 14px 6px 6px;
+  border-radius: 100px;
+  background: #ffffff;
+  color: var(--text);
+  font-size: var(--description-size);
+  line-height: var(--description-line);
+  white-space: nowrap;
+  box-shadow: var(--shadow);
+}
+
+.floating-nav__identity img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.floating-nav__cv { flex-shrink: 0; }
+
+@media (min-width: 901px) {
+  .floating-nav {
+    left: 20px;
+    right: 20px;
+    width: auto;
+    max-width: none;
+    transform: none;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 10px;
+  }
+
+  .floating-nav__identity { justify-self: start; }
+  .floating-nav__group { position: absolute; left: 50%; transform: translateX(-50%); }
+}
+
+@media (max-width: 900px) {
+  .floating-nav__identity { display: none; }
 }
