@@ -1605,7 +1605,6 @@ h1 {
 h1, h2, h3, h4, h5, h6,
 .work-case__company,
 .work-case__content strong,
-.section-kicker,
 .section-subtitle,
 .mini-heading,
 .not-found__code {
@@ -1615,4 +1614,10 @@ h1, h2, h3, h4, h5, h6,
 
 button, input, select, textarea {
   font-family: inherit;
+}
+
+.hero-copy,
+.hero-copy h1,
+.section-kicker {
+  font-family: "ALS Hauss Next", "Segoe UI", sans-serif;
 }
