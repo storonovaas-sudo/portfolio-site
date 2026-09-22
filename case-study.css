@@ -1,7 +1,7 @@
 .page-shell {
   --case-heading-size: 20px;
   --case-heading-line: 26px;
-  --case-body-line: 24px;
+  --case-body-line: calc(24px + 2pt);
   --case-block-gap: 96px;
   width: min(100%, var(--page));
   margin: 0 auto;
@@ -883,7 +883,7 @@ body.has-image-lightbox {
     padding: max(144px, calc(env(safe-area-inset-top, 0px) + 128px)) 16px 40px;
     --case-heading-size: 19px;
     --case-heading-line: 25px;
-    --case-body-line: 23px;
+    --case-body-line: calc(23px + 2pt);
     --case-block-gap: 72px;
   }
 

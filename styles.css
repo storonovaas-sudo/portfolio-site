@@ -29,8 +29,8 @@
   --heading-1-line: 38px;
   --heading-2-size: 24px;
   --heading-2-line: 30px;
-  --text-size: 16px;
-  --text-line: 20px;
+  --text-size: calc(16px + 2pt);
+  --text-line: calc(20px + 2pt);
   --description-size: 13px;
   --description-line: 16px;
 }
@@ -286,6 +286,8 @@ h1 {
 }
 
 .intro.hero-intro {
+  --text-size: 16px;
+  --text-line: 20px;
   justify-items: center;
   gap: 0;
   padding-top: 42px;
