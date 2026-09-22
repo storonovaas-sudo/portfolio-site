@@ -8,6 +8,6 @@
   mask-image: linear-gradient(#000 0%, #000 40%, transparent 100%);
   -webkit-mask-image: linear-gradient(#000 0%, #000 40%, transparent 100%);
 }
-.rays-backdrop canvas { width: 100%; height: 100%; display: block; opacity: .58; }
+.rays-backdrop canvas { width: 100%; height: 100%; display: block; opacity: .30; }
 .page { position: relative; }
 @media (max-width: 560px) { .rays-backdrop { height: 740px; } }
