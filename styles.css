@@ -885,6 +885,44 @@ h1 {
   text-align: center;
 }
 
+.footer__contacts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.footer__contacts a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  color: #ffffff;
+}
+
+.footer__contacts a:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.footer__contacts a:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 5px;
+}
+
+.footer__contacts img {
+  display: block;
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.footer__contacts img[src$="/telegram.svg"] {
+  transform: translate(-1px, 1px);
+}
+
 .footer__illustration {
   display: block;
   width: 240px;
@@ -1018,6 +1056,8 @@ h1 {
   display: none;
 }
 
+.floating-nav__identity:hover,
+.footer__contacts a:hover,
 .floating-nav__cv:hover,
 .floating-nav__cta:hover {
   animation: nav-button-vibrate 260ms ease-in-out;
@@ -1170,6 +1210,8 @@ h1 {
     transition: none;
   }
 
+  .floating-nav__identity:hover,
+  .footer__contacts a:hover,
   .floating-nav__cv:hover,
   .floating-nav__cta:hover,
   .floating-nav.is-menu-open .floating-nav__menu,
