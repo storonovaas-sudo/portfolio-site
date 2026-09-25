@@ -6,9 +6,9 @@ const handler = require('../api/likes');
 const caseId = 'case-appruvo-payments';
 const visitor = '12345678-1234-4123-8123-123456789abc';
 
-async function api(method, body, cookie = `portfolioVisitor=${visitor}`) {
+async function api(method, body, cookie = `portfolioVisitor=${visitor}`, headers = {}) {
   const res = { headers: {}, setHeader(k, v) { this.headers[k] = v; }, status(code) { this.code = code; return this; }, json(data) { this.data = data; return this; } };
-  await handler({ method, body, query: { case: caseId }, headers: { cookie, 'content-type': 'application/json' } }, res);
+  await handler({ method, body, query: { case: caseId }, headers: { cookie, 'content-type': 'application/json', ...headers } }, res);
   return res;
 }
 
@@ -68,6 +68,29 @@ function client(fetch, legacy = false) {
 }
 const flush = () => new Promise(resolve => setImmediate(resolve));
 const ok = data => ({ ok: true, json: async () => data });
+
+test('API: rejects unsupported methods, malformed JSON and cross-site writes', async () => {
+  const unsupported = await api('DELETE');
+  assert.equal(unsupported.code, 405);
+  assert.equal(unsupported.headers.Allow, 'GET, POST');
+  assert.equal((await api('POST', '{')).code, 400);
+  const body = { case: caseId, liked: true };
+  assert.equal((await api('POST', body, undefined, { 'sec-fetch-site': 'cross-site' })).code, 403);
+  assert.equal((await api('POST', body, undefined, { 'content-type': 'text/plain' })).code, 403);
+});
+
+test('API: invalid storage responses fail closed without leaking credentials', async (t) => {
+  const previous = { ...process.env };
+  process.env.UPSTASH_REDIS_REST_URL = 'https://redis.test';
+  process.env.UPSTASH_REDIS_REST_TOKEN = 'private-test-token';
+  t.after(() => { process.env = previous; });
+  for (const result of [null, [], [{ error: 'private-test-token' }], [{ result: -1 }, { result: 0 }]]) {
+    t.mock.method(global, 'fetch', async () => ({ ok: true, json: async () => result }));
+    const response = await api('GET');
+    assert.equal(response.code, 503);
+    assert.equal(JSON.stringify(response.data).includes('private-test-token'), false);
+  }
+});
 
 test('UI: lost response retries same state, blocks double clicks, refreshes', async () => {
   let liked = false;

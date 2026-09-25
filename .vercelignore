@@ -1,0 +1,7 @@
+# Local tools, reports, and experiments are not public site resources.
+previews/
+tests/
+scripts/
+README.md
+AUDIT.md
+.env.example

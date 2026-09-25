@@ -89,6 +89,8 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
   if (lightMode > 0.5) {
     vec3 mapped = vec3(1.0) - exp(-max(fragColor.rgb, vec3(0.0)) * 1.35);
     float energy = clamp(max(mapped.r, max(mapped.g, mapped.b)), 0.0, 1.0);
+    vec3 hue = mapped / max(energy, 0.0001);
+    vec3 ink = mix(hue * 0.25, hue * 0.72, energy);
     // Pastel blue-violet tint for the white portfolio background.
     fragColor = vec4(mix(vec3(1.0), vec3(0.45, 0.50, 0.98), energy * 1.15), 1.0);
   }

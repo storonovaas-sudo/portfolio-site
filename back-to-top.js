@@ -108,6 +108,7 @@ if (caseImages.length) {
   lightbox.setAttribute("role", "dialog");
   lightbox.setAttribute("aria-modal", "true");
   lightbox.setAttribute("aria-label", "Просмотр изображения");
+  lightbox.inert = true;
   lightbox.innerHTML = `
     <button class="image-lightbox__close" type="button" aria-label="Закрыть изображение">
       <svg aria-hidden="true" viewBox="0 0 24 24">
@@ -149,6 +150,8 @@ if (caseImages.length) {
   let startPanX = 0;
   let startPanY = 0;
   let isDraggingImage = false;
+  let previousFocus;
+  const backgroundState = new Map();
 
   const updateImageZoom = () => {
     lightboxImage.style.setProperty("--image-zoom", imageZoom);
@@ -166,9 +169,20 @@ if (caseImages.length) {
   const closeLightbox = () => {
     lightbox.classList.remove("is-open");
     document.body.classList.remove("has-image-lightbox");
+    lightbox.inert = true;
+    backgroundState.forEach((wasInert, element) => { element.inert = wasInert; });
+    backgroundState.clear();
+    previousFocus?.focus({ preventScroll: true });
   };
 
   const openLightbox = (image) => {
+    previousFocus = image;
+    lightbox.inert = false;
+    [...document.body.children].forEach((element) => {
+      if (element === lightbox || element.tagName === "SCRIPT") return;
+      backgroundState.set(element, element.inert);
+      element.inert = true;
+    });
     imageZoom = 1;
     panX = 0;
     panY = 0;
@@ -269,8 +283,22 @@ if (caseImages.length) {
   lightboxImage.addEventListener("pointercancel", stopImageDrag);
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && lightbox.classList.contains("is-open")) {
+    if (!lightbox.classList.contains("is-open")) return;
+    if (event.key === "Escape") {
+      event.preventDefault();
       closeLightbox();
+    }
+    if (event.key === "Tab") {
+      const buttons = [...lightbox.querySelectorAll("button:not(:disabled)")];
+      const first = buttons[0];
+      const last = buttons.at(-1);
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     }
   });
 }

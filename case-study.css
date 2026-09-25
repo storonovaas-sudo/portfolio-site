@@ -114,14 +114,6 @@
   margin-top: 0;
 }
 
-.badge {
-  color: var(--muted);
-  font-size: var(--description-size);
-  line-height: var(--description-line);
-  font-weight: 400;
-  letter-spacing: 0;
-}
-
 .section-kicker {
   display: inline-flex;
   align-items: center;
@@ -652,10 +644,6 @@
   width: 100%;
   height: 100%;
   min-height: 0;
-}
-
-.case-section-final {
-  padding-bottom: 56px;
 }
 
 .image-lightbox {

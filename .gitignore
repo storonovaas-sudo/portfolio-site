@@ -1,6 +1,10 @@
 # macOS metadata
 .DS_Store
 
+# Python maintenance tools
+__pycache__/
+*.pyc
+
 # Local dependencies and deployment caches
 node_modules/
 .vercel/
