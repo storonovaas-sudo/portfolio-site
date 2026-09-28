@@ -10,6 +10,10 @@ test('Timeweb server: pages, clean URLs, private files and API adapter', async t
   for (const route of ['/', '/growth', '/growth.html', '/case-appruvo-payments', '/styles.css', '/likes.js', '/healthz']) {
     assert.equal((await fetch(base + route)).status, 200, route);
   }
+  const shader = await fetch(base + '/assets/light-rays/shader.frag?v=20260922');
+  assert.equal(shader.status, 200);
+  assert.match(shader.headers.get('content-type'), /^text\/plain/);
+  assert.match(await shader.text(), /void main\s*\(/);
   for (const route of ['/.env', '/.git/config', '/server.js', '/api/likes.js', '/package.json', '/tests/likes.test.js', '/README.md', '/nested/missing']) {
     assert.equal((await fetch(base + route)).status, 404, route);
   }
