@@ -5,3 +5,5 @@ scripts/
 README.md
 AUDIT.md
 .env.example
+server.js
+package.json

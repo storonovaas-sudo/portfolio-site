@@ -8,8 +8,9 @@
 `api/likes.js` — серверная функция; `likes.js` — её браузерный клиент.
 Vercel использует `cleanUrls`: например, `growth.html` доступна по `/growth`.
 
-React, TypeScript, package.json, npm-зависимостей и этапа сборки нет.
-HTML/CSS/JS публикуются как есть; API требует среды Vercel и Node.js.
+React, TypeScript и npm-зависимостей нет. `package.json` содержит команды
+запуска и проверок для Node.js. HTML/CSS/JS публикуются как есть;
+API работает в Vercel либо через `server.js` в Timeweb.
 Для просмотра статики: `python3 -m http.server 8000` и `/index.html`.
 Этот сервер не поддерживает API лайков и маршрутизацию Vercel без `.html`.
 
@@ -65,7 +66,33 @@ Production. Поддерживаются также `KV_REST_API_URL` и `KV_RES
 Проверка: `node --test tests/likes.test.js`.
 После публикации проверьте все четыре кейса: лайк, перезагрузка, общий счётчик
 в другом браузере, снятие лайка и повтор после потери сети.
-Обычный статический сервер не запускает `/api/likes`; нужен Vercel runtime.
+Обычный статический сервер не запускает `/api/likes`; используйте Vercel
+либо `node server.js` (Node.js 22+).
+
+## Timeweb Cloud
+
+App Platform: репозиторий `storonovaas-sudo/portfolio-site`, ветка `main`,
+профиль Express / Node.js 24, регион Москва. Сервер использует стандартные
+модули Node.js и не требует установки Express или других зависимостей.
+
+- Команда сборки: `node --check server.js`.
+- Команда запуска: `node server.js`.
+- Директория проекта: корень (поле пустое).
+- Путь проверки состояния: `/healthz`.
+- Порт: `PORT` из окружения или `3000`, интерфейс `0.0.0.0`.
+- Для лайков задайте `UPSTASH_REDIS_REST_URL` и `UPSTASH_REDIS_REST_TOKEN`
+  существующей базы в переменных Timeweb. Не коммитьте значения в Git.
+
+`server.js` обслуживает страницы с `.html` и без расширения, статические
+ресурсы, страницу 404 и существующий обработчик `/api/likes`.
+Служебные файлы и серверный код недоступны через HTTP. `/healthz` проверяет
+сам процесс; доступность базы проверяется отдельным запросом к `/api/likes`.
+Проверка: `node --test tests/*.test.js`.
+
+Vercel остаётся совместимым: `.vercelignore` исключает `server.js` и
+`package.json`, а существующий `api/likes.js` продолжает работать как функция.
+Общая база сохраняет счётчики; cookie посетителей привязаны к домену,
+поэтому на новом техническом домене личные отметки не переносятся.
 
 Документация: https://vercel.com/docs/functions/runtimes/node-js
 и https://upstash.com/docs/redis/features/restapi (атомарные транзакции).
