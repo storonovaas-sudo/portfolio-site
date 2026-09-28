@@ -7,7 +7,7 @@ test('Timeweb server: pages, clean URLs, private files and API adapter', async t
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
   t.after(() => new Promise(resolve => server.close(resolve)));
   const base = `http://127.0.0.1:${server.address().port}`;
-  for (const route of ['/', '/growth', '/growth.html', '/case-appruvo-payments', '/styles.css', '/likes.js', '/healthz']) {
+  for (const route of ['/', '/growth', '/growth.html', '/case-appruvo-payments', '/styles.css', '/likes.js', '/healthz', '/fonts/als-hauss-next-book.otf', '/fonts/als-unios-medium.otf']) {
     assert.equal((await fetch(base + route)).status, 200, route);
   }
   const shader = await fetch(base + '/assets/light-rays/shader.frag?v=20260922');
